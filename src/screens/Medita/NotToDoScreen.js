@@ -18,7 +18,7 @@ import { TaskContext } from '../../context/TaskContext';
 import {useNoToDo} from '../../hooks/useNoToDo';
 import {windowWidth} from '../../utils/Dimentions';
 import { LoadingScreen } from '../LoadingScreen';
-import FirstData from '../../components/FirstData';
+import {FirstData} from '../../components/FirstData';
 
 const NotToDoScreen = ({navigation}) => {
     const [cambioColor, setCambioColor] = useState('')
@@ -39,7 +39,7 @@ const NotToDoScreen = ({navigation}) => {
     if(status === 'checking') return <LoadingScreen/>
 
 
-    // console.log(data);
+   
     return (
         <View style={styles.container}>
             

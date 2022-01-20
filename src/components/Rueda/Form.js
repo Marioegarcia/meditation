@@ -6,17 +6,20 @@ import Titulos from '../Titulos';
 import { windowHeight } from '../../utils/Dimentions';
 import { Button } from 'react-native-paper';
 
-const Form = ({hideModal,guardarRueda}) => {
+const Form = ({hideModal,guardarRueda,rueda}) => {
+    
     const {form, onChange} = useForm({
-        familia: 0,
-        salud: 0,
-        amistad: 0,
-        trabajoEstudios: 0,
-        amorSexo: 0,
-        economia: 0,
-        espiritual: 0,
-        crecimientoPersonal:0
+        familia: rueda ? rueda.familia : 0,
+        salud: rueda ? rueda.salud : 0,
+        amistad: rueda ? rueda.amistad : 0,
+        trabajoEstudios: rueda ? rueda.trabajoEstudios : 0,
+        amorSexo: rueda ? rueda.amorSexo : 0,
+        economia: rueda ? rueda.economia : 0,
+        espiritual: rueda ? rueda.espiritual : 0,
+        crecimientoPersonal:rueda ? rueda.crecimientoPersonal : 0,
     });
+
+    
 
     const items = [
         {
@@ -69,7 +72,7 @@ const Form = ({hideModal,guardarRueda}) => {
         },
     ]
 
-    console.log(form);
+   
     return (
         <View style={styles.container} >
             <Titulos texto={'¿Como te encuentras?'} />

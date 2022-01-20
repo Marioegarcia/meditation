@@ -69,8 +69,7 @@ export const RuedaProvider = ({children}) => {
         });
 
         
-        // console.log(results);
-        // console.log('antes de acabar getTodo');
+       
     };
 
     const crearRueda =  (data) => {
@@ -102,56 +101,54 @@ export const RuedaProvider = ({children}) => {
         });
     };
 
-    // const deleteNotToDo = id => {
-    //     db.transaction(txn => {
-    //         txn.executeSql(
-    //             `DELETE from NoToDoList where rowid = ${id}`,
-    //             [],
-    //             (sqlTxn, res) => {
-    //                 getRueda();
-    //                 Alert.alert('Eliminado correctamente');
-    //             },
-    //             error => {
-    //                 console.log('error on adding category ' + error.message);
-    //                 return false;
-    //             },
-    //         );
-    //     });
-    // };
+    const deleteRueda = id => {
+        db.transaction(txn => {
+            txn.executeSql(
+                `DELETE from RuedaDeVida where rowid = ${id}`,
+                [],
+                (sqlTxn, res) => {
+                    getRueda();
+                    Alert.alert('Eliminado correctamente');
+                },
+                error => {
+                    console.log('error on adding category ' + error.message);
+                    return false;
+                },
+            );
+        });
+    };
 
-    // const upDateTodo = (id, todo, tipo) => {
+    const upDateTodo = (data) => {
+        const { 
+            id,
+            crecimientoPersonal ,
+            familia,
+            salud,
+            amistad,
+            trabajoEstudios,
+            amorSexo,
+            economia,
+            espiritual,
+           
+        } = data;
         
-    //     db.transaction(tx => {
-    //         tx.executeSql(
-    //             'UPDATE NoToDoList set todo=?, tipo=?  where id=?',
-    //             [todo, tipo, id],
-    //             (tx, results) => {
-    //                 if (results.rowsAffected > 0) {
-    //                     getRueda();
-    //                     Alert.alert('Actualizado correctamente');
+        db.transaction(tx => {
+            tx.executeSql(
+                'UPDATE RuedaDeVida set crecimientoPersonal=?,familia=?,salud=?,amistad=?,trabajoEstudios=?,amorSexo=?,economia=?,espiritual=?  where id=?',
+                [crecimientoPersonal,familia,salud,amistad,trabajoEstudios,amorSexo,economia,espiritual, id],
+                (tx, results) => {
+                    if (results.rowsAffected > 0) {
+                        getRueda();
+                        Alert.alert('Actualizado correctamente');
                         
                         
-    //                 } else Alert.alert('Error');
-    //             },
-    //         );
-    //     });
-    // };
+                    } else Alert.alert('Error');
+                },
+            );
+        });
+    };
 
-    // const upDateDone = (id, done) => {
-        
-    //     db.transaction(tx => {
-    //         tx.executeSql(
-    //             'UPDATE NoToDoList set done=?  where id=?',
-    //             [done, id],
-    //             (tx, results) => {
-    //                 if (results.rowsAffected > 0) {
-    //                     getRueda();
-    //                     console.log('Actualizado correctamente');
-    //                 } else Alert.alert('Error');
-    //             },
-    //         );
-    //     });
-    // };
+    
     
     return (
         <RuedaContext.Provider
@@ -159,8 +156,8 @@ export const RuedaProvider = ({children}) => {
                 ...state,
                 getRueda,
                 crearRueda,
-                // crearNotTask,
-                // deleteNotToDo,
+                deleteRueda,
+                upDateTodo,
                 // upDateTodo,
                 // upDateDone,
                 

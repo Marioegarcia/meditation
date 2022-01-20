@@ -2,44 +2,34 @@ import moment from 'moment';
 import 'moment/locale/es';
 
 import React, {useContext, useState} from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Alert,
+import {StyleSheet, Text, View, Alert} from 'react-native';
 
-} from 'react-native';
-
-import { Modal,List} from 'react-native-paper';
-
+import {Modal, List} from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import FirstData from '../../components/FirstData';
+import {FirstData} from '../../components/FirstData';
+import FechaSelect from '../../components/Rueda/FechaSelect';
 import Form from '../../components/Rueda/Form';
 import RuedaVida from '../../components/Rueda/RuedaVida';
 import Titulos from '../../components/Titulos';
-import { RuedaContext } from '../../context/RuedaContext';
-
+import {RuedaContext} from '../../context/RuedaContext';
 
 moment.locale('es');
 
 const RuedaVidaScreen = () => {
     const [visible, setVisible] = useState(false);
     const [modalDescription, setModalDescription] = useState(false);
-    const [expanded, setExpanded] = React.useState(true);
+    const [view, setView] = useState(0);
+    const [openBar, setOpenBar] = useState(false);
+    const {ruedas, status, crearRueda,deleteRueda,upDateTodo} = useContext(RuedaContext);
+    const [isUpdate, setIsUpdate] = useState(false);
 
-  const handlePress = () => setExpanded(!expanded);
-    const {ruedas,status,crearRueda} = useContext(RuedaContext)
- 
-    
+
+
     const showModal = () => setVisible(true);
     const hideModal = () => setVisible(false);
-    
-    console.log(status);
 
-    const guardarRueda = (data) => {
-     
-       
+    const guardarRueda = data => {
         Alert.alert(
             '¿Guardar?',
             '¿Estas seguro que desea guardar la Rueda de Vida?',
@@ -52,62 +42,132 @@ const RuedaVidaScreen = () => {
                 {
                     text: 'Si',
                     onPress: () => {
-                        hideModal();
-                        
-                       
+                       if (isUpdate) {
+                            hideModal();
+                            setOpenBar(false);
+                            upDateTodo({
+                                ...data,
+                                id:ruedas[view].id
+                            })
+                       } else {
+                            hideModal();
+                            setOpenBar(false);
                             crearRueda({
                                 ...data,
                                 fecha: moment().unix(),
                             });
-                        
-                       
-                        
+                       }
                     },
                 },
             ],
         );
     };
 
+    const borrar = () => {
+        const id = ruedas[view].id;
+        Alert.alert(
+            'Eliminar',
+            '¿Estas seguro que desea guardar la Rueda de Vida?',
+            [
+                {
+                    text: 'Cancelar',
+                    onPress: () => console.log('Cancel Pressed'),
+                    style: 'cancel',
+                },
+                {
+                    text: 'Si',
+                    onPress: () => {
+                        setView(0);
+                        setOpenBar(false);
+                        deleteRueda(id);
+                    },
+                },
+            ],
+        );
+        
+    }
+
+    const actualizarRueda = () => {
+        setIsUpdate(true);
+        showModal();
+    }
+
+    const nuevaRueda = ( ) => {
+        
+        setIsUpdate(false);
+        showModal();
+
+    }
+
+    
     return (
         <View style={{flex: 1, width: '100%'}}>
-            <View style={styles.cabecera}>
-                <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                    <Titulos texto={'Rueda de Vida'} />
+            {!openBar ? (
+                <View style={styles.cabecera}>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <Titulos texto={'Rueda de Vida'} />
+
+                        <Icon
+                            name="contact-support"
+                            size={20}
+                            onPress={() => setModalDescription(true)}
+                        />
+                    </View>
+                    {
+                        status === 'full' && (
+                            <Icon
+                                name={'more-vert'}
+                                size={30}
+                                onPress={() => setOpenBar(true)}
+                            />
+                        )
+                    }
+                    
+                </View>
+            ) : (
+                <View style={styles.iconosContent}>
                     <Icon
-                        name="contact-support"
-                        size={20}
-                        onPress={() => setModalDescription(true)}
+                        name="delete"
+                        size={25}
+                        onPress={borrar}
+                        style={styles.iconos}
+                    />
+                    <Icon
+                        name="edit"
+                        size={25}
+                        onPress={actualizarRueda}
+                        style={styles.iconos}
+                    />
+                    <Icon
+                        name="add"
+                        size={30}
+                        onPress={nuevaRueda}
+                        style={styles.iconos}
+                    />
+                    <Icon
+                        name={'more-horiz'}
+                        size={25}
+                        onPress={() => setOpenBar(false)}
                     />
                 </View>
-
-                <Icon name="add" size={30} onPress={showModal} />
-            </View>
-
+            )}
 
             <View style={styles.container}>
-                {
-                    status === 'full' ? (
-                        <>
-                        
+                {status === 'full' ? (
+                    <>
+                        <FechaSelect ruedas={ruedas} setView={setView} />
 
-                            <RuedaVida rueda={ruedas[0]} />
-                        </>
-                        
-
-                    ) : (
-                        <>
-
-                            <FirstData 
-                            urlImg={require('../../assets/img/todo.png')} 
+                        <RuedaVida rueda={ruedas[view]} />
+                    </>
+                ) : (
+                    <>
+                        <FirstData
+                            urlImg={require('../../assets/img/empty.png')}
                             btnText={'Crear Rueda de Vida'}
-                            nav={showModal}
-                            />
-
-                        </>
-                    )
-                }
-               
-
+                            nav={nuevaRueda}
+                        />
+                    </>
+                )}
             </View>
 
             <Modal
@@ -116,8 +176,11 @@ const RuedaVidaScreen = () => {
                 contentContainerStyle={{
                     backgroundColor: 'white',
                 }}>
-                    <Form hideModal={hideModal} guardarRueda={guardarRueda}  />
-               
+                <Form 
+                hideModal={hideModal} 
+                guardarRueda={guardarRueda}  
+                rueda={ !isUpdate ? null : ruedas[view]  }
+                />
             </Modal>
 
             <Modal
@@ -148,11 +211,21 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cabecera: {
-        alignItems: 'center',
+        // alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 5,
         right: 5,
+    },
+    iconosContent: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        marginHorizontal: 10,
+    },
+    iconos: {
+        marginHorizontal: 15,
+        marginTop: 5,
     },
     img: {
         height: 200,
@@ -163,5 +236,4 @@ const styles = StyleSheet.create({
         // justifyContent:'center',
         alignItems: 'center',
     },
-   
 });

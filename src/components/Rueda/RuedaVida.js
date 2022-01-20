@@ -1,14 +1,13 @@
 import React from 'react'
 import { StyleSheet,processColor, } from 'react-native'
 import { RadarChart } from 'react-native-charts-wrapper'
-
+ 
 import { colores } from '../../theme/appTheme'
 
 
 const RuedaVida = ({rueda}) => {
     const d = 0.5;
   
-    console.log(rueda);
     const data = {
         dataSets:[
                 {

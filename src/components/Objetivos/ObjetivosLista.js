@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import { ObjetivosContext } from '../../context/ObjetivosContext'
 import ItemObjetivo from './ItemObjetivo'
+import {FirstData} from '../FirstData';
+;
+
 
 const ObjetivosLista = () => {
     const {objetivos,status,crearObjetivo} = useContext(ObjetivosContext)
@@ -22,19 +25,24 @@ const ObjetivosLista = () => {
 
     return (
         <View style={styles.body} >
-            <Text>ListaObjetivos</Text>
+           
 
-            
+
             {
                 !objetivos ? (
-                    <Text>Crear</Text>
+                    <FirstData 
+                    urlImg={require('../../assets/img/empty.png')}
+                    btnText='Crear nuevo objetivo'
+                    nav={()=>console.log('nuevo objetivo')}
+                    />
                 ) : (
                     <>
-                    <FlatList
-                    data={objetivos}
-                    renderItem={({item})=> <ItemObjetivo item={item} /> }
-                    keyExtractor={(item) => item.id}
-                    />
+                        <Text>ListaObjetivos</Text>
+                        <FlatList
+                        data={objetivos}
+                        renderItem={({item})=> <ItemObjetivo item={item} /> }
+                        keyExtractor={(item) => item.id}
+                        />
                     </>
                 )
             }

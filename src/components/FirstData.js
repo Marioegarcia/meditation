@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import { windowWidth } from '../utils/Dimentions';
 
-const FirstData = ({urlImg,btnText,nav}) => {
+export  const FirstData = ({urlImg,btnText,nav}) => {
     return (
         <View style={styles.section}>
             <Image
@@ -22,16 +22,16 @@ const FirstData = ({urlImg,btnText,nav}) => {
     );
 };
 
-export default FirstData;
+
 
 const styles = StyleSheet.create({
     img: {
-        height: 200,
-        width: 200,
+        height: 140,
+        width: 140,
     },
     section: {
         flex: 1,
-        // justifyContent:'center',
+        marginTop:40,
         alignItems: 'center',
     },
     btnNewTask: {

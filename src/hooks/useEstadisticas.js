@@ -39,5 +39,6 @@ export const useEstadisticas = () => {
 
     return {
         dataEmotions,
+        entradas
     };
 };

@@ -20,14 +20,14 @@ export const colores = {
     pinkMate:'#FF98C1',
     purpleBG:'#483a99',
 
-    crecimiento:'#d99054',
-    familia:'#6a998d',
-    salud:'#76173b',
-    amistad:'#98ccd7',
-    trabajo:'#1c4c6d',
-    amor:'#f3d37f',
-    economia:'#53b7e0',
-    espiritual:'#c65d71',
+    crecimiento:'#1DD3B0',
+    familia:'#ffe84f',
+    salud:'#e0ff4f',
+    amistad:'#fc9527',
+    trabajo:'#153131',
+    amor:'#CC2936',
+    economia:'#470FF4',
+    espiritual:'#673eb3',
    
 
 }

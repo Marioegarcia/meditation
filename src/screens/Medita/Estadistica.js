@@ -2,13 +2,14 @@ import React from 'react';
 import {StyleSheet, Text, View, processColor} from 'react-native';
 import {PieChart} from 'react-native-charts-wrapper';
 import BackgroundImage from '../../components/BackgroundImage';
+import {FirstData} from '../../components/FirstData';
+import SinData from '../../components/SinData';
 import Titulos from '../../components/Titulos';
 import {useEstadisticas} from '../../hooks/useEstadisticas';
 
 const Estadistica = () => {
-    const {dataEmotions} = useEstadisticas();
+    const {dataEmotions, entradas} = useEstadisticas();
 
-   
     const data = {
         dataSets: [
             {
@@ -48,40 +49,50 @@ const Estadistica = () => {
         <>
             <View style={styles.container}>
                 <BackgroundImage />
-                
-                <View style={{marginTop:25}} >
-                    <Titulos texto={'Estados de Ánimo'} />
-                </View>
-                <PieChart
-                    style={styles.chart}
-                    data={data}
-                    legend={{
-                        enabled: true,
-                        textSize: 20,
-                        form: 'CIRCLE',
-                        // verticalAlignment: "BOTTOM",
-                        // orientation: "VERTICAL",
-                        wordWrapEnabled: true,
-                    }}
-                    extraOffsets={{left: 5, top: 5, right: 5, bottom: 5}}
-                    entryLabelColor={processColor('#11324D')}
-                    entryLabelTextSize={20}
-                    entryLabelFontFamily={'HelveticaNeue-Medium'}
-                    
-                    drawEntryLabels={false}
-                    rotationEnabled={true}
-                    rotationAngle={14}
-                    usePercentValues={true}
-                    styledCenterText={{
-                        text: '',
-                    }}
-                    holeRadius={15}
-                    holeColor={processColor('#f0f0f0')}
-                    transparentCircleRadius={25}
-                    transparentCircleColor={processColor('#f0f0f088')}
-                    maxAngle={380}
-                    chartDescription={{text: ''}}
-                />
+
+                {entradas.length > 0 ? (
+                    <>
+                        <View style={{marginTop: 25}}>
+                            <Titulos texto={'Estados de Ánimo'} />
+                        </View>
+                        <PieChart
+                            style={styles.chart}
+                            data={data}
+                            legend={{
+                                enabled: true,
+                                textSize: 20,
+                                form: 'CIRCLE',
+                                // verticalAlignment: "BOTTOM",
+                                // orientation: "VERTICAL",
+                                wordWrapEnabled: true,
+                            }}
+                            extraOffsets={{
+                                left: 5,
+                                top: 5,
+                                right: 5,
+                                bottom: 5,
+                            }}
+                            entryLabelColor={processColor('#11324D')}
+                            entryLabelTextSize={20}
+                            entryLabelFontFamily={'HelveticaNeue-Medium'}
+                            drawEntryLabels={false}
+                            rotationEnabled={true}
+                            rotationAngle={14}
+                            usePercentValues={true}
+                            styledCenterText={{
+                                text: '',
+                            }}
+                            holeRadius={15}
+                            holeColor={processColor('#f0f0f0')}
+                            transparentCircleRadius={25}
+                            transparentCircleColor={processColor('#f0f0f088')}
+                            maxAngle={380}
+                            chartDescription={{text: ''}}
+                        />
+                    </>
+                ) : (
+                    <SinData texto={'Sin data'} />
+                )}
             </View>
         </>
     );
@@ -93,9 +104,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    chart:{
+    chart: {
         flex: 1,
-         width: '60%',
-         alignSelf:'center'
-    }
+        width: '60%',
+        alignSelf: 'center',
+    },
 });

@@ -86,7 +86,7 @@ export const ObjetivosProvider = ({children}) => {
                 `INSERT INTO Objetivos (titulo , finObjetivo , done ,plazo,ambito,codigo ) VALUES (?,?,?,?)`,
                 [titulo , finObjetivo , done ,plazo,ambito,codigo],
                 (sqlTxn, res) => {
-                    getNotToDo();
+                    getObjetivos();
                     Alert.alert('Tarea creada existosamente');
                 },
                 error => {
