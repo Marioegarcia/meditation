@@ -3,8 +3,9 @@ import { StyleSheet, Text, View} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {useForm} from '../../hooks/useForm';
 import Titulos from '../Titulos';
-import { windowHeight } from '../../utils/Dimentions';
+import { adjust, windowHeight } from '../../utils/Dimentions';
 import { Button } from 'react-native-paper';
+import { colores } from '../../theme/appTheme';
 
 const Form = ({hideModal,guardarRueda,rueda}) => {
     
@@ -26,49 +27,57 @@ const Form = ({hideModal,guardarRueda,rueda}) => {
             id:1,
             nombre:'Familia',
             valor:form.familia,
-            inp:'familia'
+            inp:'familia',
+            color:colores.familia
         },
         {
             id:2,
             nombre:'Salud',
             valor:form.salud,
-            inp:'salud'
+            inp:'salud',
+            color:colores.salud
         },
         {
             id:3,
             nombre:'Amistad',
             valor:form.amistad,
-            inp:'amistad'
+            inp:'amistad',
+            color:colores.amistad
         },
         {
             id:4,
             nombre:'Trabajo o Estudios',
             valor:form.trabajoEstudios,
-            inp:'trabajoEstudios'
+            inp:'trabajoEstudios',
+            color:colores.trabajo
         },
         {
             id:5,
             nombre:'Amor y Sexo',
             valor:form.amorSexo,
-            inp:'amorSexo'
+            inp:'amorSexo',
+            color:colores.amor
         },
         {
             id:6,
             nombre:'Economia',
             valor:form.economia,
-            inp:'economia'
+            inp:'economia',
+            color:colores.economia
         },
         {
             id:7,
             nombre:'Espiritual',
             valor:form.espiritual,
-            inp:'espiritual'
+            inp:'espiritual',
+            color:colores.espiritual
         },
         {
             id:8,
             nombre:'Crecimiento personal',
             valor:form.crecimientoPersonal,
-            inp:'crecimientoPersonal'
+            inp:'crecimientoPersonal',
+            color:colores.crecimiento
         },
     ]
 
@@ -85,10 +94,11 @@ const Form = ({hideModal,guardarRueda,rueda}) => {
                             // style={{width: 200, height: 40}}
                             minimumValue={0}
                             maximumValue={10}
-                            minimumTrackTintColor="red"
+                            minimumTrackTintColor={item.color}
                             maximumTrackTintColor="#000000"
                             onValueChange={(value)=>onChange(value,item.inp)}
                             step={1}
+                            thumbTintColor={item.color}
                         />
                     </View>
                 ))
@@ -127,6 +137,6 @@ const styles = StyleSheet.create({
         marginVertical:windowHeight * 1 / 100
     },
     label:{
-        fontSize:windowHeight * 3 / 100
+        fontSize:adjust(12)
     }
 });

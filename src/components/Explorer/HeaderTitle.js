@@ -1,16 +1,22 @@
+import moment from 'moment';
 import React,{useContext} from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import {AuthContext} from '../../context/AuthContext';
+import { useFecha } from '../../hooks/useFecha';
 import { colores } from '../../theme/appTheme';
+
+import { adjust } from '../../utils/Dimentions';
+
 
 const HeaderTitle = () => {
     const {nombre} = useContext(AuthContext);
+    const {mensaje} = useFecha();
+
+
     return (
         <View style={styles.container} >
-            <Image
-            source={require('../../assets/img/rabbit.png')}
-            style={styles.img}
-            />
+           <Text style={styles.titulo} >{mensaje} {nombre}</Text>
+           <Text style={styles.subtitulos} >¿Cómo te sientes hoy?</Text>
             
         </View>
     )
@@ -20,29 +26,18 @@ export default HeaderTitle
 
 const styles = StyleSheet.create({
     container:{
-
-        alignItems:'center',
-        // zIndex:99,
-        flex:1,
-
-    },
-    img:{
-        width: '100%',
-        height: '100%',
-        resizeMode: 'center',
-        // zIndex:99,
-        position:'absolute',
-        borderTopRightRadius:100,
-        borderTopLeftRadius:100,
-        bottom:-10
+        justifyContent:'center',
+        alignItems:'flex-start',
+        paddingVertical:10,
+        paddingHorizontal:10
     },
     titulo: {
-        fontSize:25,
+        fontSize:adjust(32),
         fontWeight:'bold',
-       
+        color:colores.principal
     },
     subtitulos:{
-        fontSize:45,
-        fontWeight:'bold',
+        fontSize:adjust(18),
+        color:colores.principal
     }
 })

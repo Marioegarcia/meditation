@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {ToggleButton} from 'react-native-paper';
+import {Modal, ToggleButton} from 'react-native-paper';
+import { FormObjetivos } from '../../components/Objetivos/FormObjetivos';
 import ObjetivosEstadistica from '../../components/Objetivos/ObjetivosEstadistica';
 import ObjetivosLista from '../../components/Objetivos/ObjetivosLista';
 
@@ -9,16 +10,25 @@ import Titulos from '../../components/Titulos';
 import { ObjetivosContext } from '../../context/ObjetivosContext';
 import { windowWidth } from '../../utils/Dimentions';
 
-const ObjetivosScreen = () => {
-    const [value, setValue] = React.useState('left');
-
+const ObjetivosScreen = ({navigation}) => {
+    const [value, setValue] = useState('left');
     
+    const {objetivos} = useContext(ObjetivosContext);
+    
+  
+    
+    
+
+
+
     return (
         <View style={styles.container} >
-            <Titulos texto={'Objetivos'} />
-
+            <View style={{marginVertical:10,marginHorizontal:15}}   >
+            <Titulos texto={'Metas personales'} />
+            </View>
+            
             <View style={styles.cabecera}>
-
+            
                 <ToggleButton.Row
                     onValueChange={value => setValue(value)}
                     value={value}
@@ -39,9 +49,18 @@ const ObjetivosScreen = () => {
 
             <View style={styles.seccion} >
                 {
-                    value === 'left' ? ( <ObjetivosLista/> ) : (<ObjetivosEstadistica/>)
+                    value === 'left' ? ( 
+                        <>
+                            <ObjetivosLista  navigation={navigation} />
+                            
+                        </>
+                     
+                    ) : (
+                        <ObjetivosEstadistica/>
+                    )
                 }
             </View>
+
         </View>
     );
 };
@@ -57,7 +76,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width:windowWidth,
         marginTop:19,
-        // backgroundColor:'red'
+        
     },
     seccion:{
         flex:1,

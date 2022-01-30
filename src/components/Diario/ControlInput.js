@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-paper'
 import { colores } from '../../theme/appTheme'
 
-const ControlInput = ({onChange,input,value,lines = 2}) => {
+const ControlInput = ({onChange,input,value,lines=1}) => {
     
 
     return (
@@ -31,8 +31,7 @@ export default ControlInput
 const styles = StyleSheet.create({
     container:{
         marginTop:5,
-        marginBottom:10,
-       
+        marginBottom:10, 
     },
     inputs: {
         backgroundColor: 'white',

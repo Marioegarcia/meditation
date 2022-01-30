@@ -5,13 +5,11 @@ import {
   TextInput,
   View,
   TouchableOpacity,
-  Alert,
-  ScrollView,
-
+  Alert
 } from 'react-native';
 import {AuthContext} from '../context/AuthContext';
 import { colores } from '../theme/appTheme';
-import { windowWidth } from '../utils/Dimentions';
+import { adjust, windowWidth } from '../utils/Dimentions';
 
 
 const FormLogin = () => {
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
   label: {
     alignSelf: 'flex-start',
     left: 45,
-    fontSize: windowWidth * 8 / 100,
+    fontSize: adjust(14),
     color: 'black',
   },
   inputText: {

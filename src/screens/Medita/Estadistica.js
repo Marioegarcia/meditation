@@ -1,8 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View, processColor} from 'react-native';
+import {StyleSheet, View, processColor} from 'react-native';
 import {PieChart} from 'react-native-charts-wrapper';
+
 import BackgroundImage from '../../components/BackgroundImage';
-import {FirstData} from '../../components/FirstData';
 import SinData from '../../components/SinData';
 import Titulos from '../../components/Titulos';
 import {useEstadisticas} from '../../hooks/useEstadisticas';

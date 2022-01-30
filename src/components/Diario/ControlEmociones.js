@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import ImageIcono from '../../components/ImageIcono'
 import { windowWidth } from '../../utils/Dimentions'

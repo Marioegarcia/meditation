@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
 import { colores } from '../theme/appTheme'
-import {  windowHeight, windowWidth } from '../utils/Dimentions'
+import {  adjust, windowHeight } from '../utils/Dimentions'
 
 
 
@@ -29,12 +29,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: windowHeight * 30 / 100,
         resizeMode: 'contain' ,
-        // backgroundColor:'blue'
           
     },
     titulo:{
         // position:'absolute',
-        fontSize: windowWidth * 10 / 100 ,
+        fontSize: adjust(19) ,
         color:colores.blanco,
         bottom:20,
         left: 15,

@@ -4,7 +4,7 @@ import 'moment/locale/es';
 import React, {useContext, useState} from 'react';
 import {StyleSheet, Text, View, Alert} from 'react-native';
 
-import {Modal, List} from 'react-native-paper';
+import {Modal} from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FirstData} from '../../components/FirstData';
@@ -27,7 +27,10 @@ const RuedaVidaScreen = () => {
 
 
     const showModal = () => setVisible(true);
-    const hideModal = () => setVisible(false);
+    const hideModal = () => {
+        setVisible(false);
+        setOpenBar(false);
+    };
 
     const guardarRueda = data => {
         Alert.alert(
@@ -36,7 +39,7 @@ const RuedaVidaScreen = () => {
             [
                 {
                     text: 'Cancelar',
-                    onPress: () => console.log('Cancel Pressed'),
+                    onPress: () => console.log('cancel'),
                     style: 'cancel',
                 },
                 {
@@ -211,7 +214,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     cabecera: {
-        // alignItems: 'center',
+       
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 5,
@@ -233,7 +236,7 @@ const styles = StyleSheet.create({
     },
     section: {
         flex: 1,
-        // justifyContent:'center',
+        
         alignItems: 'center',
     },
 });

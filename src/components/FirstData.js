@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import { windowWidth } from '../utils/Dimentions';
+import { adjust, windowWidth } from '../utils/Dimentions';
 
 export  const FirstData = ({urlImg,btnText,nav}) => {
     return (
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     btnText: {
         color: '#4690d4',
-        fontSize: (windowWidth * 7) / 100,
+        fontSize: adjust(16),
         fontFamily: 'serif',
     },
 });

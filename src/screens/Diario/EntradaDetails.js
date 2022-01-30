@@ -166,22 +166,7 @@ const EntradaDetails = ({navigation, route}) => {
                     }}
                 />
 
-                {/* <View style={{padding: 3}}>
-                    <View style={styles.header}>
-                        <Titulos texto={situacion} />
-                        <Subheading> {moment.unix(fecha).format("Do MMMM  YYYY")} </Subheading>
-                    </View>
-                    <Card
-                        style={styles.card}>
-                        <Card.Content>
-                            <ScrollView
-                            showsVerticalScrollIndicator={false}
-                            >
-                                <Subheading>{sugerencia}</Subheading>
-                            </ScrollView>
-                        </Card.Content>
-                    </Card>
-                </View> */}
+
               
                 
 

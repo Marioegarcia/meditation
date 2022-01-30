@@ -9,7 +9,7 @@ export const objetivoReducer = (state,action) => {
             return {
                 ...state,
                 status:'full',
-                noToDo: action.payload
+                objetivos: action.payload
             }
         case 'voidObjetivos':
             

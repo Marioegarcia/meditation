@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { windowHeight, windowWidth } from '../../utils/Dimentions';
+import { adjust, windowHeight, windowWidth } from '../../utils/Dimentions';
 import { Card } from 'react-native-paper';
 import Titulos from '../../components/Titulos'
 import BackgroundImage from '../../components/BackgroundImage'
@@ -10,7 +10,7 @@ import BackgroundImage from '../../components/BackgroundImage'
 const data = [
     {
         id: 1,
-        titulo: 'Rueda de la vida',
+        titulo: 'Rueda de vida',
         img: require('../../assets/img/statsCircular.png'),
         url:'RuedaVidaScreen'
     }, 
@@ -32,91 +32,20 @@ const data = [
         img: require('../../assets/img/objetivos.png'),
         url:'ObjetivosScreen'
     },
-    {
-        id: 6,
-        titulo: '4Rueda de la vida',
-        img: require('../../assets/img/rainbow.png'),
-        
-        url:'RuedaScreen'
-    },
-    {
-        id: 7,
-        titulo: '4Rueda de la vida',
-        img: require('../../assets/img/rainbow.png'),
-        
-        url:'RuedaScreen'
-    },
-    {
-        id: 8,
-        titulo: '4Rueda de la vida',
-        img: require('../../assets/img/rainbow.png'),
-        
-        url:'RuedaScreen'
-    },
-    {
-        id: 9,
-        titulo: '4Rueda de la vida',
-        img: require('../../assets/img/rainbow.png'),
-        
-        url:'RuedaScreen'
-    },
 ]
 const MeditaScreen = memo(({navigation}) => {
 
-
-
-    // const renderItem = ({ item }) => (
-    //     <TouchableOpacity
-    //         onPress={() => navigation.navigate('EntradaDetails', item)}
-           
-    //     >
-    //         <View style={{
-    //             ...styles.cardContainer,
-    //             width: windowWidth * 0.4,
-                
-    //         }}
-    //         >
-    //             <Image
-    //                 source={require('../../assets/img/splash.png')}
-    //                 style={styles.img}
-    //             />
-
-    //             <View>
-    //                 <Text style={ styles.titulo }>
-    //                     {item.titulo}
-    //                 </Text>
-    //             </View>
-
-               
-
-               
-
-               
-    //         </View>
-
-           
-    //     </TouchableOpacity>
-
-    // );
-
   
-
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.navigate(item.url)}
-           
+           activeOpacity={0.5}
+           style={styles.btnCard}
         >
             <Card 
-            style={{
-                ...styles.card,
-            }} 
+            style={styles.card} 
             >
-                <Card.Content style={{
-                ...styles.cardContainer,
-                width: windowWidth * 0.4,
-                
-                }}  
-                >
+                <Card.Content style={styles.cardContainer} >
                   
                     <Image
                         source={item.img}
@@ -124,7 +53,11 @@ const MeditaScreen = memo(({navigation}) => {
                     />
                   
                     
-                    <View style={{justifyContent:'center',alignItems:'center'}}>
+                    <View style={{
+                        justifyContent:'center',
+                        alignItems:'center',
+                       
+                        }}>
                         <Text style={ styles.titulo }>
                             {item.titulo}
                         </Text>
@@ -143,9 +76,7 @@ const MeditaScreen = memo(({navigation}) => {
             <BackgroundImage/>
            
             
-            <View
-                style={{ alignItems: 'center' }}
-            >
+            
 
                 <FlatList
                 data={ data }
@@ -163,8 +94,11 @@ const MeditaScreen = memo(({navigation}) => {
                 keyExtractor={ (item) => item.id.toString() }
                 numColumns={ 2 }
                 showsVerticalScrollIndicator={ false }
+                contentContainerStyle={{
+                    alignItems:'center',
+                }}
                 />   
-            </View>
+            
             
            
         </View>
@@ -179,33 +113,29 @@ const styles = StyleSheet.create({
         alignItems:'center',
         marginBottom:10
     },
+    btnCard:{
+        marginHorizontal:5,
+        marginVertical:5,
+        width: windowWidth * 45 / 100,
+    },
     card: {
-        marginHorizontal: 5,
-        height: windowHeight * 20 / 100,
-       
-        marginBottom: 30,
+        height: windowHeight * 22 / 100,
+        width: '100%' ,
         borderRadius: 10,
-        paddingVertical:10,
-        // backgroundColor:'red',
-        alignItems:'center',
-        justifyContent:'center'
     },
     cardContainer: { 
         height: '100%',
         borderRadius: 10,
-        borderColor:'red',
-        // backgroundColor:'blue',
-        
     },
     titulo:{
-        fontSize: windowHeight * 2 / 100,
+        fontSize: adjust(11),
         fontWeight: 'bold',
     },
     img:{
         width: '100%',
         height: '90%',
         resizeMode:'center',
-        // backgroundColor:'yellow'
+        
     },
 
 

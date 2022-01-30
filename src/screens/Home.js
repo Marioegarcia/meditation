@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 
 import { AuthContext } from '../context/AuthContext';
-import AppNav from '../navigation/AppNav';
 import { Login } from '../navigation/Login'
 import { StackApp } from '../navigation/StackApp';
 
@@ -16,7 +15,7 @@ const Home = () => {
         )
     }
     return (
-        // <AppNav/>
+       
         <StackApp/>
     )
 }

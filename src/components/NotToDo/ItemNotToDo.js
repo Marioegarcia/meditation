@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { memo,useState } from 'react';
 import { TouchableOpacity, StyleSheet} from 'react-native';
 import {Card, Paragraph, RadioButton,Title} from 'react-native-paper';
+import { adjust } from '../../utils/Dimentions';
 
 
 
@@ -34,7 +35,9 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
         
                     <Card.Content style={[styles.container,
                     cambioColor === item.id && {
-                        backgroundColor:'rgba(144,130,130,0.1)'
+                        backgroundColor:'rgba(144,130,130,0.1)',
+                        borderColor:'rgba(144,130,130,0.1)',
+                        borderRadius:8
                     }
                     ]}>
                         <RadioButton
@@ -80,11 +83,11 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         borderRadius: 5,
         alignItems: 'center',
-       
+        borderColor:'#4690d4'
     },
 
     texto: {
-        fontSize: 20,
+        fontSize: adjust(20),
         fontStyle: 'italic',
         
     },

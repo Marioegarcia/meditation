@@ -75,7 +75,6 @@ export const ObjetivosProvider = ({children}) => {
             titulo,
             finObjetivo,
             done,
-            plazo,
             ambito,
             codigo
         } = data;
@@ -83,9 +82,10 @@ export const ObjetivosProvider = ({children}) => {
 
         db.transaction(txn => {
             txn.executeSql(
-                `INSERT INTO Objetivos (titulo , finObjetivo , done ,plazo,ambito,codigo ) VALUES (?,?,?,?)`,
-                [titulo , finObjetivo , done ,plazo,ambito,codigo],
+                `INSERT INTO Objetivos (titulo , finObjetivo , done ,ambito,codigo ) VALUES (?,?,?,?,?)`,
+                [titulo , finObjetivo , done ,ambito,codigo],
                 (sqlTxn, res) => {
+                    console.log(res);
                     getObjetivos();
                     Alert.alert('Tarea creada existosamente');
                 },
@@ -96,12 +96,70 @@ export const ObjetivosProvider = ({children}) => {
         });
     }
 
+    const eliminarObjetivo = (id) => {
+        
+        db.transaction(txn => {
+            txn.executeSql(
+                `DELETE from Objetivos where rowid = ${id}`,
+                [],
+                (sqlTxn, res) => {
+                    getObjetivos();
+                    Alert.alert('Eliminado correctamente');
+                },
+                error => {
+                    console.log('error on adding category ' + error.message);
+                    return false;
+                },
+            );
+        });
+    }
+
+    const updateobjetivo = (data) => {
+        
+        const {id,ambito,finObjetivo,titulo} = data;
+       
+       
+        db.transaction(tx => {
+            tx.executeSql(
+                'UPDATE Objetivos set ambito=? ,finObjetivo=? ,titulo=?  where id=?',
+                [ambito,finObjetivo,titulo, id],
+                (tx, results) => {
+                    if (results.rowsAffected > 0) {
+                        getObjetivos();
+                        Alert.alert('Actualizado correctamente');
+                        
+                        
+                    } else Alert.alert('Error');
+                },
+            );
+        });
+    }
+
+    const updateDone = (id,done) => {
+        db.transaction(tx => {
+            tx.executeSql(
+                'UPDATE Objetivos set done=?  where id=?',
+                [done, id],
+                (tx, results) => {
+                    if (results.rowsAffected > 0) {
+                        getObjetivos();
+                        Alert.alert('Actualizado correctamente');
+                        
+                        
+                    } else Alert.alert('Error');
+                },
+            );
+        });
+    }
+    
     return (
         <ObjetivosContext.Provider
             value={{
                 ...state,
-                crearObjetivo
-                
+                crearObjetivo,
+                eliminarObjetivo,
+                updateobjetivo,
+                updateDone
             }}>
             {children}
         </ObjetivosContext.Provider>

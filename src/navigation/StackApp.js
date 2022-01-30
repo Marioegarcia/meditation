@@ -11,6 +11,8 @@ import NotToDoScreen from '../screens/Medita/NotToDoScreen';
 import NewNotToDo from '../components/Forms/NewNotToDo';
 import ObjetivosScreen from '../screens/Medita/ObjetivosScreen';
 import RuedaVidaScreen from '../screens/Medita/RuedaVidaScreen';
+import { ObjetivoFormScreen } from '../screens/ObjetivoFormScreen';
+import { colores } from '../theme/appTheme';
 
 
 
@@ -30,7 +32,7 @@ export const StackApp = () => {
         headerShown: false,
 
         contentStyle:{
-            backgroundColor:'white',
+            backgroundColor:colores.blanco,
         }
     }}
     >
@@ -46,6 +48,7 @@ export const StackApp = () => {
         <Stack.Screen name="NewNotToDo" component={ NewNotToDo } />
 
         <Stack.Screen name="ObjetivosScreen" component={ ObjetivosScreen } />
+        <Stack.Screen name="ObjetivoFormScreen" component={ ObjetivoFormScreen } />
      
         
     </Stack.Navigator>

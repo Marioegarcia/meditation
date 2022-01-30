@@ -4,7 +4,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Card, Text} from 'react-native-paper';
 
 import {colores} from '../../theme/appTheme';
-import { windowWidth, windowHeight } from '../../utils/Dimentions';
+import { windowWidth, windowHeight, adjust } from '../../utils/Dimentions';
 import {emociones} from '../../utils/Utilis';
 import ImageIcono from '../ImageIcono';
 
@@ -28,31 +28,40 @@ const DiarioEntradas = ({entradas, navigation}) => {
                     ...styles.card,
                     backgroundColor: emociones[item.emocion].colores,
                 }}>
-                <View style={{flexDirection: 'row', margin: 10,alignItems:'center'}}>
+                <View style={{flexDirection: 'row', margin: 10,alignItems:'center',flex:1}}>
                     <View
                         style={{
-                            // padding: 9,
                             borderRadius: 50,
                             marginRight: 7,
                         }}>
                         <ImageIcono url={emociones[item.emocion].img} />
                     </View>
+                    
                     <View style={styles.cardContainer}>
-                        <Text style={styles.fecha}>
-                            {moment.unix(item.fecha).format('ddd')},{' '}
-                            {moment.unix(item.fecha).format('DD MMM YY')}{' '}
-                        </Text>
+                        
+                        <View style={{flex:1,justifyContent:'center'}} >
+                            <Text style={styles.situacionTxt} numberOfLines={1} ellipsizeMode='tail' >{item.situacion}</Text>
+                        </View>
+                        
+                        
 
-                        <Text
-                            style={{
-                                ...styles.emocion,
-                                color: emociones[item.emocion].colores,
-                            }}>
-                            {sentimientos[item.emocion]}
-                        </Text>
-                        <Text numberOfLines={1} ellipsizeMode='tail' >{item.situacion}</Text>
+                        <View >
+                            <Text style={styles.fecha}>
+                                {/* {moment.unix(item.fecha).format('ddd')},{' '} */}
+                                {moment.unix(item.fecha).format('DD MMM YY')}{' '}
+                            </Text>
+
+                            <Text
+                                style={{
+                                    ...styles.emocion,
+                                    color: emociones[item.emocion].colores,
+                                }}>
+                                {sentimientos[item.emocion]}
+                            </Text>
+                        </View>
                     </View>
                    
+
                 </View>
             </Card>
         </TouchableOpacity>
@@ -72,7 +81,7 @@ const DiarioEntradas = ({entradas, navigation}) => {
     const Cabecera = () => {
         return (
             <>
-                <Text style={styles.headerList}> Tus entradas </Text>
+                <Text style={styles.headerList}>Tus entradas </Text>
             </>
         );
     };
@@ -96,14 +105,10 @@ export default DiarioEntradas;
 
 const styles = StyleSheet.create({
     headerList: {
-        fontSize: windowWidth * 6 / 100,
+        fontSize: adjust(17),
         marginBottom: 5,
         color: colores.purple,
-    },
-    itemTitulo: {
-        // fontSize:25,
-        textAlignVertical: 'bottom',
-        height: 25,
+        marginLeft:15
     },
     card: {
         shadowColor: colores.tristeza,
@@ -117,26 +122,31 @@ const styles = StyleSheet.create({
         elevation: 4,
         marginHorizontal: 10,
         borderWidth: 0.5,
-        // borderColor: colores.secundario,
-        // padding:9,
-        height:90
     },
     cardContainer: {
         backgroundColor: '#FFF',
-        paddingVertical: 3,
-        paddingHorizontal: 20,
+        paddingVertical:10,
+        paddingHorizontal:5,
+        margin:5,        
         borderRadius: 10,
-        width: '65%',
+        flexDirection:'row',
+        flex:1,
+        // height:'100%',
+        justifyContent:'space-evenly',
+        // alignItems:'baseline'
     },
     fecha: {
         textTransform: 'uppercase',
         fontWeight: 'bold',
         color: colores.purpleBG,
-        fontSize:windowHeight * 2 / 100,
+        fontSize:adjust(10),
     },
     emocion: {
         fontWeight: 'bold',
         // color:'#a7a4aa',
-        fontSize: windowHeight * 3 / 100,
+        fontSize: adjust(16),
     },
+    situacionTxt:{
+        fontSize:adjust(16),
+    }
 });

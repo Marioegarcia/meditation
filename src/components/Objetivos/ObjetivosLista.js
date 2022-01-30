@@ -1,63 +1,79 @@
-import React, { useContext } from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
-import { ObjetivosContext } from '../../context/ObjetivosContext'
-import ItemObjetivo from './ItemObjetivo'
+import React, {useContext, useEffect, useState} from 'react';
+import {FlatList, StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, View} from 'react-native';
+import {ObjetivosContext} from '../../context/ObjetivosContext';
+import ItemObjetivo from './ItemObjetivo';
 import {FirstData} from '../FirstData';
-;
+import BtnFAB from '../BtnFAB';
+import BarraNotToDo from '../NotToDo/BarraNotToDo';
+import { Modal, Title } from 'react-native-paper';
+import { FormObjetivos } from './FormObjetivos';
+import { windowHeight } from '../../utils/Dimentions';
 
 
-const ObjetivosLista = () => {
-    const {objetivos,status,crearObjetivo} = useContext(ObjetivosContext)
 
-    console.log(objetivos);
-    const ambitos = [
-        'Crecimiento personal',
-        'Familia',
-        'Salud',
-        'Amistad',
-        'Trabajo o estudios',
-        'Amor y sexo',
-        'Economía',
-        'Espiritual',
-    ];
 
+const ObjetivosLista = ({navigation}) => {
+    const {status,objetivos} = useContext(ObjetivosContext);
+    const [show, setShow] = useState(null);
+   
+
+
+
+    const goForm = () => {
+        navigation.navigate('ObjetivoFormScreen');
+    }
+
+    
+    const openUpdate = (item) => {
+        navigation.navigate('ObjetivoFormScreen',item);
+        
+    }
 
 
     return (
-        <View style={styles.body} >
-           
-
-
-            {
-                !objetivos ? (
-                    <FirstData 
+        <View style={styles.body}>
+            {status !== 'full' ? (
+                <>
+                <FirstData
                     urlImg={require('../../assets/img/empty.png')}
-                    btnText='Crear nuevo objetivo'
-                    nav={()=>console.log('nuevo objetivo')}
-                    />
-                ) : (
-                    <>
-                        <Text>ListaObjetivos</Text>
-                        <FlatList
-                        data={objetivos}
-                        renderItem={({item})=> <ItemObjetivo item={item} /> }
-                        keyExtractor={(item) => item.id}
-                        />
-                    </>
-                )
-            }
+                    btnText="Crear nuevo objetivo"
+                    nav={goForm}
+                />
+
+            
+                </>
                 
+            ) : (
+                <>
+                    <FlatList
+                        data={objetivos}
+                        renderItem={({index,item}) => (
+                           <ItemObjetivo 
+                           item={item} 
+                           show={show} 
+                           setShow={setShow} 
+                           index={index} 
+                           openUpdate={openUpdate} 
+                           />  
+                        )}
+                        keyExtractor={item => item.id}
+                    />
+                    
+                    <BtnFAB nameIcon='add' nav={goForm} />
+                    
+                </>
+            )}
+
             
             
         </View>
-    )
-}
+    );
+};
 
-export default ObjetivosLista
+export default ObjetivosLista;
 
 const styles = StyleSheet.create({
-    body:{
-        // flex:1,
-        
-    }
-})
+    body: {
+        flex:1,
+    },
+});

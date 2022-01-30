@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import SelectDropdown from 'react-native-select-dropdown'
 import  Icon  from 'react-native-vector-icons/MaterialIcons'
 import { useFecha } from '../../hooks/useFecha'
+import { adjust } from '../../utils/Dimentions'
 
 
 const FechaSelect = ({ruedas,setView}) => {
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
         color: "#444",
         textAlign: "center",
         fontWeight: "bold",
-        fontSize: 22,
+        fontSize: adjust(15),
         marginHorizontal: 12,
     },
     dropdown3DropdownStyle:{
@@ -97,7 +98,7 @@ const styles = StyleSheet.create({
         color: "#F1F1F1",
         textAlign: "center",
         fontWeight: "bold",
-        fontSize: 22,
+        fontSize: adjust(15),
         marginHorizontal: 12,
     }
 

@@ -1,10 +1,8 @@
-import React,{useCallback, useContext, useEffect, useState} from 'react';
+import React,{ useContext, useState} from 'react';
 import {
     View,
     Text,
     StyleSheet,
-    Image,
-    TouchableOpacity,
     FlatList
 } from 'react-native';
 import {Caption} from 'react-native-paper';
@@ -16,7 +14,7 @@ import {ItemNotToDo} from '../../components/NotToDo/ItemNotToDo';
 import { TaskContext } from '../../context/TaskContext';
 
 import {useNoToDo} from '../../hooks/useNoToDo';
-import {windowWidth} from '../../utils/Dimentions';
+import {adjust} from '../../utils/Dimentions';
 import { LoadingScreen } from '../LoadingScreen';
 import {FirstData} from '../../components/FirstData';
 
@@ -121,23 +119,24 @@ export default NotToDoScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal:20
+        paddingHorizontal:5,
+    
     },
     cabecera: {
         marginBottom:30
     },
     todo: {
-        fontSize: 30,
+        fontSize: adjust(24),
         fontFamily: 'serif',
         fontWeight: 'bold',
         color: '#4690d4',
     },
     list: {
-        fontSize: 30,
+        fontSize: adjust(24),
         color: '#21262f',
     },
     subtitulo: {
-        fontSize: 14,
+        fontSize: adjust(9),
         color: '#21262f',
     }
 });
