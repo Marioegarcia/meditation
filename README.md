@@ -7,9 +7,9 @@ En esta app es para ayudar a ver la diferencia entre donde estás y dónde quier
 Aún está en Desarrollo.
 
 
-![](./Examples/example1.jpeg)
+![](./Examples/example1.jpg)
 
 
 
 
-![](./Examples/img/example2.jpeg)
+![](./Examples/example2.jpg)
