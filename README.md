@@ -7,9 +7,12 @@ En esta app es para ayudar a ver la diferencia entre donde estás y dónde quier
 Aún está en Desarrollo.
 
 
-![](./Examples/example1.jpg)
+<table>
+  <tr><td colspan=2><strong>Example</strong></td></tr>
+  <tr>
+    <td><p align="center"><img src="./Examples/example1.jpg" height="420"/></p></td>
+    <td><p align="center"><img src="./Examples/example2.jpg" width="260" height="420"/></p></td>
+  </tr>
+ 
+</table>
 
-
-
-
-![](./Examples/example2.jpg)
