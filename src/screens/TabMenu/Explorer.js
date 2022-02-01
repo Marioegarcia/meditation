@@ -1,5 +1,6 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { AccesoDirecto } from '../../components/Explorer/AccesoDirecto'
 
 
 import BtnExplorer from '../../components/Explorer/BtnExplorer'
@@ -44,7 +45,12 @@ const Explorer = ({ navigation }) => {
                     </View>
 
                    
-
+                    <View style={[styles.content,
+                    {
+                        backgroundColor:'#f7f6fb'
+                    }]} >
+                        {/* <AccesoDirecto crearNueva={crearNueva} /> */}
+                    </View>
                     
                 
                 </View>

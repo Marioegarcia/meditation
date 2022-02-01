@@ -6,6 +6,7 @@ import { useFecha } from '../../hooks/useFecha';
 import { colores } from '../../theme/appTheme';
 
 import { adjust } from '../../utils/Dimentions';
+import { AccesoDirecto } from './AccesoDirecto';
 
 
 const HeaderTitle = () => {
@@ -16,8 +17,8 @@ const HeaderTitle = () => {
     return (
         <View style={styles.container} >
            <Text style={styles.titulo} >{mensaje} {nombre}</Text>
-           <Text style={styles.subtitulos} >¿Cómo te sientes hoy?</Text>
-            
+           <Text style={styles.subtitulos} >¿Cómo sientes el dia hoy?</Text>
+            <AccesoDirecto/>
         </View>
     )
 }
