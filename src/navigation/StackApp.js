@@ -13,6 +13,7 @@ import ObjetivosScreen from '../screens/Medita/ObjetivosScreen';
 import RuedaVidaScreen from '../screens/Medita/RuedaVidaScreen';
 import { ObjetivoFormScreen } from '../screens/ObjetivoFormScreen';
 import { colores } from '../theme/appTheme';
+import { TimeOutScreen } from '../screens/Medita/TimeOutScreen';
 
 
 
@@ -49,6 +50,8 @@ export const StackApp = () => {
 
         <Stack.Screen name="ObjetivosScreen" component={ ObjetivosScreen } />
         <Stack.Screen name="ObjetivoFormScreen" component={ ObjetivoFormScreen } />
+
+        <Stack.Screen name="TimeOutScreen" component={ TimeOutScreen } />
      
         
     </Stack.Navigator>

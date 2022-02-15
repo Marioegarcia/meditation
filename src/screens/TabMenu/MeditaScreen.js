@@ -11,7 +11,7 @@ const data = [
     {
         id: 1,
         titulo: 'Rueda de vida',
-        img: require('../../assets/img/statsCircular.png'),
+        img: require('../../assets/img/seed-of-life.png'),
         url:'RuedaVidaScreen'
     }, 
     {
@@ -23,14 +23,20 @@ const data = [
     {
         id: 3,
         titulo: 'Not To-Do List',
-        img: require('../../assets/img/todo.png'),
+        img: require('../../assets/img/to-do-list.png'),
         url:'NotToDoScreen'
     },
     {
         id: 4,
         titulo: 'Objetivos',
-        img: require('../../assets/img/objetivos.png'),
+        img: require('../../assets/img/goals.png'),
         url:'ObjetivosScreen'
+    },
+    {
+        id: 5,
+        titulo: 'Time Out!',
+        img: require('../../assets/img/clock.png'),
+        url:'TimeOutScreen'
     },
 ]
 const MeditaScreen = memo(({navigation}) => {
