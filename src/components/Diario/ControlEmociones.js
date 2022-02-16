@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
 import ImageIcono from '../../components/ImageIcono'
-import { windowWidth } from '../../utils/Dimentions'
 import { emociones } from '../../utils/Utilis'
 
 const ControlEmociones = ({onChange,input,value}) => {
@@ -75,18 +73,19 @@ export default ControlEmociones
 const styles = StyleSheet.create({
     content:{
         flexDirection:'row',
-        width: windowWidth,
+       
         flexWrap:'wrap',
         alignItems:'center',
 
         justifyContent:'center',
-
+       
     },
     toggle:{
         alignItems:'center',
         justifyContent:'center',
         marginVertical:8,
-        marginHorizontal:10
+        marginHorizontal:10,
+       
     },
     btnToggle:{
         borderRadius:15,

@@ -1,22 +1,18 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View,StyleSheet} from 'react-native';
 
 import Titulos from '../../components/Titulos';
-import { windowWidth } from '../../utils/Dimentions';
+import { colores } from '../../theme/appTheme';
+
 
 const ItemSlide = ({item}) => {
+    // console.log(item);
     return (
-        <View style={{width: windowWidth, paddingHorizontal:10}}>
-            <View style={{height: 40, marginTop: 25,marginBottom:30, alignItems:'center'}}>
-                <Titulos texto={item.title} />
-            </View>
-
-            <View
-                style={{
-                    // paddingHorizontal: 30,
-                }}>
-                <Titulos texto={item.ask} />
-
+        <View style={styles.container}>
+            
+            <View  style={styles.header} >
+                <Titulos texto={item.ask} size={19} />
+                
                 {item.component}
             </View>
 
@@ -26,3 +22,21 @@ const ItemSlide = ({item}) => {
 };
 
 export default ItemSlide;
+
+
+const styles = StyleSheet.create({
+    container:{
+        marginVertical:5,
+        marginHorizontal:10,
+        backgroundColor:colores.blanco,
+        borderRadius:10,
+        paddingHorizontal:9,
+        elevation:4
+    },
+    header:{
+        // height: 40,
+        marginTop: 25,
+        marginBottom:30, 
+        // alignItems:'center'
+    }
+})

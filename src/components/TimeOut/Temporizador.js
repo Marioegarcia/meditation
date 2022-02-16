@@ -4,6 +4,7 @@ import { ProgressBar, Colors } from 'react-native-paper';
 import {InputNumerico} from '../InputNumerico';
 import {adjust, windowWidth} from '../../utils/Dimentions';
 import { BtnTime } from './BtnTime';
+import { colores } from '../../theme/appTheme';
 
 export const Temporizador = memo(({api, setTemporizador, formatted,completed,total}) => {
     const [horas, setHoras] = useState(0);
@@ -11,7 +12,9 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
     const [segundos, setSegundos] = useState(0);
     const [barra, setBarra] = useState(1)
     const t = total/60000 ;
-   
+    const x = t * 1 / barra ;
+
+
     useEffect(() => {
         const temp = horas * 60 + segundos / 60;
         setTemporizador(temp + minutos);
@@ -25,9 +28,8 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
     
 
     const handleStartClick = () => {
-        const m = horas+minutos+segundos;
-        
-        setBarra(t / m * 100)
+       
+        setBarra(t);
         api.start();
     };
 
@@ -47,12 +49,6 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
 
     
     
-    const x = t / barra  * 100;
-    // console.log({barra, minutos,segundos,t });
-    console.log(x);
-    // const x = barra * t / 100;
-    
-    // console.log(x);
     
 
     return (
@@ -63,8 +59,12 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
             </Text>
 
             <View style={{width:windowWidth - 50}} >
-                <Text>barra</Text>
-                <ProgressBar progress={ barra  } color={Colors.red800}  />
+                {
+                    api.isStarted() && (
+                        <ProgressBar progress={ x  } color={colores.secundarioLight}  />          
+                    )
+                }
+                
             </View>
             
 
@@ -93,7 +93,7 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
                     {
                         !api.isStarted() && (
     
-                            <BtnTime handle={handleStartClick} icono='play-arrow' />
+                            <BtnTime handle={handleStartClick} texto='Start' />
                         )
                     }
                     
@@ -102,8 +102,8 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
                     {
                         api.isStarted() && (
                             <>
-                                <BtnTime handle={handlePauseClick} icono='pause' />
-                                <BtnTime handle={handleStopClick} icono='stop'  />
+                                <BtnTime handle={handlePauseClick} texto='Pause' />
+                                <BtnTime handle={handleStopClick} texto='Stop'  />
                             </>
                         )
                     }
@@ -111,7 +111,7 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
                     {
                         api.isStarted() || api.isPaused() && (
 
-                            <BtnTime handle={handleStopClick} icono='stop'  />
+                            <BtnTime handle={handleStopClick} texto='Stop'  />
                         )
                     }
                    

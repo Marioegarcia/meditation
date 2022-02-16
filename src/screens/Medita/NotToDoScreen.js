@@ -5,7 +5,7 @@ import {
     StyleSheet,
     FlatList
 } from 'react-native';
-import {Caption} from 'react-native-paper';
+import {Caption,Switch} from 'react-native-paper';
 
 
 import BarraNotToDo from '../../components/NotToDo/BarraNotToDo';
@@ -17,6 +17,7 @@ import {useNoToDo} from '../../hooks/useNoToDo';
 import {adjust} from '../../utils/Dimentions';
 import { LoadingScreen } from '../LoadingScreen';
 import {FirstData} from '../../components/FirstData';
+import { colores } from '../../theme/appTheme';
 
 const NotToDoScreen = ({navigation}) => {
     const [cambioColor, setCambioColor] = useState('')
@@ -33,11 +34,35 @@ const NotToDoScreen = ({navigation}) => {
     } = useNoToDo(navigation)
 
     const {noToDo,status} = useContext(TaskContext)
+    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
 
-    if(status === 'checking') return <LoadingScreen/>
+    const onToggleSwitch = () => {
+        if (isSwitchOn) {
+           
+        }else{
 
+        }
+        setIsSwitchOn(!isSwitchOn)
+    }
+
+
+    
 
    
+
+
+    noToDo.sort((a, b) => {
+    if(a.done == b.done) {
+        return 0; 
+    }
+    if(a.done < b.done) {
+        return -1;
+    }
+    return 1;
+    });
+    
+    if(status === 'checking') return <LoadingScreen/>
+
     return (
         <View style={styles.container}>
             
@@ -89,6 +114,7 @@ const NotToDoScreen = ({navigation}) => {
                 </>
             ) : (
                 <>
+                
                     <FlatList
                         data={noToDo}
                         renderItem={({item}) => (
@@ -129,14 +155,15 @@ const styles = StyleSheet.create({
         fontSize: adjust(24),
         fontFamily: 'serif',
         fontWeight: 'bold',
-        color: '#4690d4',
+        // color: '#4690d4',
+        color: colores.purpleBG,
     },
     list: {
         fontSize: adjust(24),
         color: '#21262f',
     },
     subtitulo: {
-        fontSize: adjust(9),
+        fontSize: adjust(10),
         color: '#21262f',
     }
 });

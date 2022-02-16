@@ -1,22 +1,19 @@
 import React from 'react'
-import { Text ,StyleSheet} from 'react-native'
+import { Text } from 'react-native'
 import { colores } from '../theme/appTheme'
 import { adjust } from '../utils/Dimentions'
 
-const Titulos = ({texto}) => {
+const Titulos = ({texto,size = 24}) => {
     return (
         
-        <Text style={styles.titulo} > {texto} </Text>
+        <Text style={{
+            fontSize: adjust(size),
+            fontWeight: 'bold',
+            color: colores.purple
+        }} > {texto} </Text>
         
     )
 }
 
 export default Titulos
 
-const styles = StyleSheet.create({
-    titulo:{
-        fontSize: adjust(24),
-        fontWeight: 'bold',
-        color: colores.purple
-    }
-})

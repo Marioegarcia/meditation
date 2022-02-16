@@ -45,7 +45,7 @@ const MeditaScreen = memo(({navigation}) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.navigate(item.url)}
-           activeOpacity={0.5}
+           activeOpacity={0.6}
            style={styles.btnCard}
         >
             <Card 
@@ -60,8 +60,8 @@ const MeditaScreen = memo(({navigation}) => {
                   
                     
                     <View style={{
-                        justifyContent:'center',
-                        alignItems:'center',
+                        // justifyContent:'center',
+                        // alignItems:'center',
                        
                         }}>
                         <Text style={ styles.titulo }>
@@ -122,24 +122,29 @@ const styles = StyleSheet.create({
     btnCard:{
         marginHorizontal:5,
         marginVertical:5,
-        width: windowWidth * 45 / 100,
+        // width: windowWidth * 45 / 100,
+        
     },
     card: {
-        height: windowHeight * 22 / 100,
-        width: '100%' ,
+        height: windowHeight * 20 / 100,
+        width: windowHeight * 20 / 100,
         borderRadius: 10,
+        
     },
     cardContainer: { 
         height: '100%',
         borderRadius: 10,
+        justifyContent:'space-around',
+        alignItems:'center',
+        
     },
     titulo:{
-        fontSize: adjust(11),
+        fontSize: adjust(16),
         fontWeight: 'bold',
     },
     img:{
-        width: '100%',
-        height: '90%',
+        width: '60%',
+        height: '60%',
         resizeMode:'center',
         
     },

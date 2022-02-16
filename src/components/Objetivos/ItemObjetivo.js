@@ -114,8 +114,8 @@ const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
                         styles.objTexto,
                         done === 1 && {
                             textDecorationLine: 'line-through',
-                            textDecorationColor: '#f54090',
-                            textDecorationStyle:'double',
+                            // textDecorationColor: 'red',
+                            // textDecorationStyle:'double',
                             fontWeight:'400',
                             fontStyle:'italic'
                         }

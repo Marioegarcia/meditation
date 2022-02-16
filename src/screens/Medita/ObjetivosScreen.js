@@ -1,19 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, {  useState } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Modal, ToggleButton} from 'react-native-paper';
-import { FormObjetivos } from '../../components/Objetivos/FormObjetivos';
+import { ToggleButton} from 'react-native-paper';
+
 import ObjetivosEstadistica from '../../components/Objetivos/ObjetivosEstadistica';
 import ObjetivosLista from '../../components/Objetivos/ObjetivosLista';
 
 import Titulos from '../../components/Titulos';
 
-import { ObjetivosContext } from '../../context/ObjetivosContext';
 import { windowWidth } from '../../utils/Dimentions';
 
 const ObjetivosScreen = ({navigation}) => {
     const [value, setValue] = useState('left');
     
-    const {objetivos} = useContext(ObjetivosContext);
+
     
   
     

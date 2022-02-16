@@ -1,20 +1,18 @@
 import moment from 'moment';
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {Alert, ScrollView, StyleSheet, View} from 'react-native';
 import {Button} from 'react-native-paper';
-import Carousel from 'react-native-snap-carousel';
 
 import BackgroundImage from '../../components/BackgroundImage';
 import ControlEmociones from '../../components/Diario/ControlEmociones';
 import ControlInput from '../../components/Diario/ControlInput';
 import {AuthContext} from '../../context/AuthContext';
 import {useForm} from '../../hooks/useForm';
-import {windowWidth} from '../../utils/Dimentions';
+
 import ItemSlide from './ItemSlide';
 
 const NuevaEntrada = ({navigation}) => {
     const {insertData, getData} = useContext(AuthContext);
-    const [activeIndex, setActiveIndex] = useState(0);
 
     const {form, onChange} = useForm({
         situacion: '',
@@ -90,46 +88,22 @@ const NuevaEntrada = ({navigation}) => {
         <View style={{flex: 1}}>
             <BackgroundImage />
             <ScrollView>
-                <Carousel
-                    data={items}
-                    keyExtractor={item => item.id}
-                    renderItem={item => ItemSlide(item, onChange)}
-                    sliderWidth={windowWidth}
-                    itemWidth={windowWidth}
-                    firstItem={activeIndex}
-                    layout="default"
-                    onSnapToItem={index => {
-                        setActiveIndex(index);
-                    }}
-                />
-            </ScrollView>
-            <View style={styles.btnBottom}>
-                {activeIndex !== 0 ? (
-                    <Button
-                        mode="outlined"
-                        onPress={() =>
-                            activeIndex !== 0 && setActiveIndex(activeIndex - 1)
-                        }>
-                        Atras
-                    </Button>
-                ) : (
-                    <View />
-                )}
+                {items.map(item => (
+                    <View key={item.id}  >
+                        <ItemSlide item={item} />
+                    </View>
+                    
+                ))}
 
-                {activeIndex === 4 ? (
+                <View style={styles.btnBottom}>
+                    <Button mode="contained" onPress={()=> navigation.goBack() }>
+                        Cancelar
+                    </Button>
                     <Button mode="contained" onPress={guardarEntrada}>
                         Guardar
                     </Button>
-                ) : (
-                    <Button
-                        mode="contained"
-                        onPress={() =>
-                            activeIndex < 4 && setActiveIndex(activeIndex + 1)
-                        }>
-                        Siguiente
-                    </Button>
-                )}
-            </View>
+                </View>
+            </ScrollView>
         </View>
     );
 };

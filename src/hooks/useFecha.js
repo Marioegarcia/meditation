@@ -21,14 +21,22 @@ export const useFecha = () => {
         }
     }
 
+    const comparaFecha = (a,b) => {
+        let t = moment(1651380746).isSameOrBefore(1651380746)
+        console.log(t);
+        return t;
+    }
+
     useEffect(() => {
       horaActual();
+      
     }, []);
     
 
     return {
         formatFecha,
-        mensaje
+        mensaje,
+        comparaFecha,
     }
 
 }

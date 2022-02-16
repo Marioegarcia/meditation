@@ -4,7 +4,7 @@ import { adjust } from '../../utils/Dimentions'
 import  Icon  from 'react-native-vector-icons/MaterialIcons'
 import { colores } from '../../theme/appTheme'
 
-export const BtnTime = ({icono,handle}) => {
+export const BtnTime = ({texto,handle}) => {
 
   return (
     <>
@@ -14,8 +14,14 @@ export const BtnTime = ({icono,handle}) => {
         activeOpacity={0.5}
         >
             <View style={styles.btnContent} >
-                <Icon name={icono} color={colores.blanco} size={ adjust(26) } />
-               
+                
+                <Text style={styles.btnText} >{texto} </Text>
+                {/* {
+                    icono && (
+                        <Icon name={icono} color={colores.blanco} size={ adjust(26) } />            
+                    )
+                } */}
+                
             </View>
             
         </TouchableOpacity>
@@ -26,11 +32,11 @@ export const BtnTime = ({icono,handle}) => {
 
 const styles = StyleSheet.create({
     btn:{
-        backgroundColor: colores.purple,
-        borderRadius:50,
+        backgroundColor: colores.secundario,
+        borderRadius:10,
         
-        height:adjust(60),
-        width:adjust(60),
+        height:adjust(40),
+        width:adjust(100),
         alignItems:'center',
         justifyContent:'center',
         marginHorizontal:5
@@ -39,7 +45,10 @@ const styles = StyleSheet.create({
         flexDirection:'row',
         justifyContent:'center',
         alignItems:'center',
-
-       
     },
+    btnText:{
+        fontSize:adjust(16),
+        color:'white',
+        textTransform:'uppercase'
+    }
 })

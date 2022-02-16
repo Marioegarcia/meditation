@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { memo,useState } from 'react';
 import { TouchableOpacity, StyleSheet} from 'react-native';
 import {Card, Paragraph, RadioButton,Title} from 'react-native-paper';
+import { colores } from '../../theme/appTheme';
 import { adjust } from '../../utils/Dimentions';
 
 
@@ -24,12 +25,7 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
         return (
             <>
                 <Card
-                style={{
-                    borderRadius: 8,
-                    marginVertical:5,
-                    borderColor:'#4690d4',
-                    borderWidth:0.3
-                }}
+                style={styles.card}
                 mode='outlined'
                 >
         
@@ -44,6 +40,8 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
                             // value={checked[item.done]}
                             status={checked[item.done]}
                             onPress={() => cambioTarea(item)}
+                            uncheckedColor={colores.purple}
+                            color={colores.purpleBG}
                         />
     
                         <TouchableOpacity onLongPress={()=> {
@@ -57,14 +55,16 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
                                     styles.texto,
                                     item.done === 1 && {
                                         textDecorationLine: 'line-through',
-                                        textDecorationColor: '#f54090',
+                                        fontWeight:'400',
+                                        fontStyle:'italic'
+                                       
                                     },
                                     
                                 ]}>
                                 {item.todo}
                             </Title>
     
-                            <Paragraph> { tipo[item.tipo] } </Paragraph>
+                            <Paragraph style={styles.subtitulo} > { tipo[item.tipo] } </Paragraph>
                         </TouchableOpacity>
                         
                     </Card.Content>
@@ -83,12 +83,20 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         borderRadius: 5,
         alignItems: 'center',
-        borderColor:'#4690d4'
-    },
-
-    texto: {
-        fontSize: adjust(20),
-        fontStyle: 'italic',
         
     },
+    card:{
+        borderRadius: 8,
+        marginVertical:5,
+        borderColor:colores.purpleBG,
+        borderWidth:0.3
+    },
+    texto: {
+        fontSize: adjust(17),
+        fontStyle: 'italic',
+        color: colores.purple
+    },
+    subtitulo:{
+        color:colores.purple
+    }
 });
