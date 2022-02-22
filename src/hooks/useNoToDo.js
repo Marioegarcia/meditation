@@ -1,6 +1,5 @@
-import {useCallback, useContext, useEffect, useState} from 'react';
-import {Alert} from 'react-native';
-import {db} from '../context/AuthContext';
+import {useCallback, useContext, useState} from 'react';
+
 import { TaskContext } from '../context/TaskContext';
 
 export const useNoToDo = (navigation) => {
@@ -12,7 +11,7 @@ export const useNoToDo = (navigation) => {
     const [reload, setReload] = useState();
     
 
-
+  
 
     const newTodo = () => {
         navigation.navigate('NewNotToDo',{data:false});
@@ -36,16 +35,16 @@ export const useNoToDo = (navigation) => {
     }
 
     const openBarra = (value) => {
-        console.log(value);
+        
         setData(value)
         cambioHeader(true);
-        
+       
     }
 
     const goBack = () =>{
         setData({})
-        setSelection(false);
-       
+        // setSelection(false);
+        cambioHeader(false);
         
     }
 
@@ -70,6 +69,8 @@ export const useNoToDo = (navigation) => {
     
     
     const cambioHeader = useCallback( (valor)=>{
+       
+       
         setSelection( valor )
     },[setSelection] )
   

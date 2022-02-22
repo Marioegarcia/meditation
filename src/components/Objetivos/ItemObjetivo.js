@@ -7,20 +7,20 @@ import {
     BackHandler,
     Alert,
 } from 'react-native';
-import {  RadioButton } from 'react-native-paper';
+import {RadioButton} from 'react-native-paper';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ObjetivosContext} from '../../context/ObjetivosContext';
-import { useFecha } from '../../hooks/useFecha';
-import { colores } from '../../theme/appTheme';
-import { adjust, normalize } from '../../utils/Dimentions';
+import {useFecha} from '../../hooks/useFecha';
+import {colores} from '../../theme/appTheme';
+import {adjust} from '../../utils/Dimentions';
 
-const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
-    const {titulo, id, finObjetivo, done, ambito,codigo} = item;
-    const {eliminarObjetivo,updateDone} = useContext(ObjetivosContext);
-    const {formatFecha} = useFecha()
+const ItemObjetivo = ({item, show, setShow, openUpdate}) => {
+    const {titulo, id, finObjetivo, done, ambito, codigo} = item;
+    const {eliminarObjetivo, updateDone} = useContext(ObjetivosContext);
+    const {formatFecha} = useFecha();
     const checked = ['unchecked', 'checked'];
-    
+
     const messageDelete = () => {
         Alert.alert(
             'Eliminar objetivo',
@@ -35,7 +35,7 @@ const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
             ],
         );
     };
-    
+
     const onPressSelect = id => {
         setShow(id);
     };
@@ -54,17 +54,12 @@ const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
     }, [show]);
 
     const cambioTarea = () => {
-
-         if (done === 0) {
-            
-             updateDone(id,1)
-         } else {
-            updateDone(id,0)
-         }
-         
-         
-    }
-    
+        if (done === 0) {
+            updateDone(id, 1);
+        } else {
+            updateDone(id, 0);
+        }
+    };
 
     const ambitoBG = [
         colores.familia,
@@ -74,15 +69,11 @@ const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
         colores.amor,
         colores.economia,
         colores.espiritual,
-        colores.crecimiento
-    ]
-    
-    
+        colores.crecimiento,
+    ];
 
     return (
         <>
-
-            
             <TouchableOpacity
                 onLongPress={() => onPressSelect(id)}
                 activeOpacity={0.5}
@@ -90,78 +81,74 @@ const ItemObjetivo = ({item, show, setShow,openUpdate}) => {
                     styles.container,
                     show === id && {
                         backgroundColor: '#e2e3dd',
-                        borderRadius:0,
-                        borderRadius:0,
-                        borderWidth:0,
-                        marginTop:15
+                        borderRadius: 5,
+                        borderWidth: 0,
+                        // marginTop: 15,
                     },
                 ]}>
-
-                
-                
                 <View style={styles.content}>
-                    <View style={{ alignItems: 'center',justifyContent: 'center' }}>
-                
-                        <RadioButton
-                        status={checked[item.done]}
+                    <View style={{flex:1}} >
 
-                        onPress={cambioTarea}
-                        />
-                      
-                    </View>
-                    <View style={{flex:1,marginHorizontal:2}} >
-                        <Text style={[
-                        styles.objTexto,
-                        done === 1 && {
-                            textDecorationLine: 'line-through',
-                            // textDecorationColor: 'red',
-                            // textDecorationStyle:'double',
-                            fontWeight:'400',
-                            fontStyle:'italic'
-                        }
-                        ]}>
+                        <RadioButton
+                            status={checked[item.done]}
+                            onPress={cambioTarea}
+                            uncheckedColor={colores.principal}
+                            color={colores.purpleBG}
                             
+                        />
+
+                    </View>
+                    <View style={{ flex:4, justifyContent:'center'}}>
+                        <Text
+                        style={[
+                                    styles.objTexto,
+                                    done === 1 && {
+                                        textDecorationLine: 'line-through',
+                                        // textDecorationColor: 'red',
+                                        // textDecorationStyle:'double',
+                                        fontWeight: '400',
+                                        fontStyle: 'italic',
+                                        opacity:0.3
+                                    },
+                        ]}>
                             {titulo}
                         </Text>
                     </View>
-                    
-                    <View style={{marginHorizontal:5}} >
-                        <Text style={styles.fecha} >Fin: {formatFecha(finObjetivo, 'DD.MM.YY') }</Text>
-                    </View>
 
-                </View>
-
-                <View style={{alignItems:'flex-end',marginHorizontal:5}}
-                >
-                        
-
-                        <Text style={{
-                            ...styles.ambito,
-                            backgroundColor: ambitoBG[codigo]}} 
-                        > 
-                            {ambito}
+                    <View style={{flex:1}} >
+                        <Text style={styles.fecha}>
+                            Fin: {formatFecha(finObjetivo, 'DD.MM.YY')}
                         </Text>
+                    </View>
                 </View>
 
-                
-                
-            </TouchableOpacity>
-            {show === id && (
-                    <View style={styles.actionIcon}>
-                        <TouchableOpacity
-                            onPress={messageDelete}
-                            style={styles.btn}>
-                            <Icon name="delete" size={30} color={'#d90368'} />
-                        </TouchableOpacity>
+                <View style={styles.ambito}>
+                        
+                    <View style={{backgroundColor: ambitoBG[codigo],width:10,height:'40%',margin:3,borderRadius:100}} />
+                    <Text
+                        style={[styles.ambitoTxt,{color:ambitoBG[codigo]}]}>
+                        {ambito}
+                    </Text>
 
-                        <TouchableOpacity 
-                        onPress={()=> openUpdate(item) }
-                        style={styles.btn}
-                        >
-                            <Icon name="edit" size={30} color={'#007ea7'} />
-                        </TouchableOpacity>
-                    </View>
-            )}
+                    
+                </View>
+                {show === id && (
+                        <View style={styles.actionIcon}>
+                            <TouchableOpacity
+                                onPress={messageDelete}
+                                style={styles.btn}>
+                                <Icon name="delete" size={30} color={'#d90368'} />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity
+                                onPress={() => openUpdate(item)}
+                                style={styles.btn}>
+                                <Icon name="edit" size={30} color={'#007ea7'} />
+                            </TouchableOpacity>
+                        </View>
+                    )}
+            </TouchableOpacity>
+            
         </>
     );
 };
@@ -170,53 +157,56 @@ export default ItemObjetivo;
 
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 10,
-        marginTop: 15,
-        paddingHorizontal:4,
-        paddingVertical:16,
-        borderWidth: 0.8,
-        borderColor: colores.principal,
+        borderRadius: 5,
+        marginVertical: 2,
+        paddingVertical: 6,
+        borderWidth: 0.5,
+        borderColor: '#ebebeb',
         flexWrap: 'wrap',
-        justifyContent:'space-between',
-        
+        justifyContent: 'space-between',
+        backgroundColor:colores.bgLight
+
     },
     content: {
-        marginVertical: 1,
-        flexDirection:'row',
-        
+        flexDirection: 'row',
+        // alignItems:'center'
     },
-    objTexto:{
+    objTexto: {
         fontSize: adjust(15),
-        fontWeight:'bold',
+        fontWeight: 'bold',
+        color: colores.principal,
+    },
+    fecha: {
+        fontSize: adjust(11),
+        fontWeight: 'bold',
         color:colores.principal
     },
-    fecha:{
-        fontSize: adjust(11),
-        fontWeight:'bold'
+    ambito: {
+        marginHorizontal: 5,
+        marginTop:3,
+        borderRadius: 3,
+        padding: 2,
+        // opacity: 0.5,
+        alignItems:'center',
+        justifyContent:'flex-end',
+        flexDirection:'row',
+       
     },
-    ambito:{
+    ambitoTxt:{
         fontSize: adjust(11),
-        fontWeight:'bold',
-        color:'black',
-        borderRadius:5,
-        padding:2,
-        opacity:0.5
-    },    
+        fontWeight: 'bold',
+       
+    },
     actionIcon: {
         alignItems: 'center',
-        justifyContent: 'flex-end',
-        flexDirection: 'row',
-        backgroundColor: '#e2e3dd',
-        borderBottomLeftRadius:10,
-        borderBottomRightRadius:10,
-       
+        justifyContent: 'flex-start',
+        flexDirection: 'row'
+        
     },
     btn: {
         marginHorizontal: 15,
-        // borderWidth:0.s5,
-        borderRadius:4,
-        borderColor:colores.secundario,
-        // backgroundColor:colores.secundario,
-        // paddingHorizontal:6
+        borderRadius: 4,
+        borderColor: colores.secundario,
+        
     },
 });

@@ -17,7 +17,7 @@ const HeaderTitle = () => {
     return (
         <View style={styles.container} >
            <Text style={styles.titulo} >{mensaje} {nombre}</Text>
-           <Text style={styles.subtitulos} >¿Cómo sientes el dia hoy?</Text>
+           <Text style={styles.subtitulos} >¿Cómo sientes hoy?</Text>
             <AccesoDirecto/>
         </View>
     )
@@ -27,18 +27,19 @@ export default HeaderTitle
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         justifyContent:'center',
         alignItems:'flex-start',
         paddingVertical:10,
         paddingHorizontal:10
     },
     titulo: {
-        fontSize:adjust(32),
+        fontSize:adjust(30),
         fontWeight:'bold',
         color:colores.principal
     },
     subtitulos:{
-        fontSize:adjust(18),
+        fontSize:adjust(16),
         color:colores.principal
     }
 })

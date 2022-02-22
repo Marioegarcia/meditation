@@ -1,4 +1,5 @@
 import React, {createContext, useEffect, useReducer, useState} from 'react';
+import { useFecha } from '../hooks/useFecha';
 
 import {db} from './AuthContext';
 import { objetivoReducer } from './objetivoReducer';
@@ -13,7 +14,7 @@ const objetivoInicialState = {
 export const ObjetivosContext = createContext({});
 
 export const ObjetivosProvider = ({children}) => {
-   
+    const {comparaFecha} = useFecha();
     const [state, dispatch] = useReducer(objetivoReducer, objetivoInicialState);
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export const ObjetivosProvider = ({children}) => {
 
                         dispatch({
                             type:'getObjetivos',
-                            payload: results
+                            payload: comparaFecha(results)
                         })
                     } else {
                         dispatch({

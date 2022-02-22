@@ -1,11 +1,12 @@
-import React,{ useContext, useState} from 'react';
+import React,{ useContext, useEffect, useState} from 'react';
 import {
     View,
     Text,
     StyleSheet,
-    FlatList
+    FlatList,
+    BackHandler
 } from 'react-native';
-import {Caption,Switch} from 'react-native-paper';
+import {Caption} from 'react-native-paper';
 
 
 import BarraNotToDo from '../../components/NotToDo/BarraNotToDo';
@@ -18,6 +19,7 @@ import {adjust} from '../../utils/Dimentions';
 import { LoadingScreen } from '../LoadingScreen';
 import {FirstData} from '../../components/FirstData';
 import { colores } from '../../theme/appTheme';
+import { useOrden } from '../../hooks/useOrden';
 
 const NotToDoScreen = ({navigation}) => {
     const [cambioColor, setCambioColor] = useState('')
@@ -30,26 +32,15 @@ const NotToDoScreen = ({navigation}) => {
         goBack,
         deleteItem,
         updateItem,
-       
+        
     } = useNoToDo(navigation)
-
+    const {  ordenarDone } = useOrden()
     const {noToDo,status} = useContext(TaskContext)
-    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-
-    const onToggleSwitch = () => {
-        if (isSwitchOn) {
-           
-        }else{
-
-        }
-        setIsSwitchOn(!isSwitchOn)
-    }
-
 
     
 
    
-
+  
 
     noToDo.sort((a, b) => {
     if(a.done == b.done) {
@@ -60,6 +51,7 @@ const NotToDoScreen = ({navigation}) => {
     }
     return 1;
     });
+
     
     if(status === 'checking') return <LoadingScreen/>
 
@@ -113,10 +105,10 @@ const NotToDoScreen = ({navigation}) => {
                    
                 </>
             ) : (
-                <>
+                <View style={{flex:1, backgroundColor:colores.bgLight, paddingTop:20}} >
                 
                     <FlatList
-                        data={noToDo}
+                        data={ordenarDone(noToDo)}
                         renderItem={({item}) => (
                             <ItemNotToDo 
                             item={item} 
@@ -124,17 +116,20 @@ const NotToDoScreen = ({navigation}) => {
                             openBarra={openBarra} 
                             cambioColor={cambioColor}
                             setCambioColor={setCambioColor}
+                            selection={selection}
                             />) 
                         }
                         key={item => item.id}
                         style={{flex: 1}}
-                        extraData={noToDo}
-                      
+                        extraData={ordenarDone(noToDo)}
+                      ListFooterComponent={(
+                        <View style={{height:90}} />
+                      )}
                     />
-                   
+                   <BtnFAB nameIcon={'add'} nav={newTodo} />
 
-                    <BtnFAB nameIcon={'add'} nav={newTodo} />
-                </>
+                    
+                </View>
             )}
         </View>
     );
@@ -145,11 +140,12 @@ export default NotToDoScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal:5,
-    
+        // paddingHorizontal:5,
+        
     },
     cabecera: {
-        marginBottom:30
+        marginBottom:10,
+        marginTop:10
     },
     todo: {
         fontSize: adjust(24),

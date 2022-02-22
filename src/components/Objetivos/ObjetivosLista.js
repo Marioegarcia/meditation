@@ -1,14 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, View} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {FlatList, StyleSheet,  View} from 'react-native';
 import {ObjetivosContext} from '../../context/ObjetivosContext';
 import ItemObjetivo from './ItemObjetivo';
 import {FirstData} from '../FirstData';
 import BtnFAB from '../BtnFAB';
-import BarraNotToDo from '../NotToDo/BarraNotToDo';
-import { Modal, Title } from 'react-native-paper';
-import { FormObjetivos } from './FormObjetivos';
-import { windowHeight } from '../../utils/Dimentions';
-import { useFecha } from '../../hooks/useFecha';
+import { Button } from 'react-native-paper';
+
 
 
 
@@ -16,8 +13,7 @@ import { useFecha } from '../../hooks/useFecha';
 const ObjetivosLista = ({navigation}) => {
     const {status,objetivos} = useContext(ObjetivosContext);
     const [show, setShow] = useState(null);
-    const {comparaFecha} = useFecha();
-
+    
 
 
     const goForm = () => {
@@ -29,18 +25,8 @@ const ObjetivosLista = ({navigation}) => {
         navigation.navigate('ObjetivoFormScreen',item);
         
     }
-    // console.log(objetivos);
 
-    objetivos.sort((a, b) => {
-        
-        if(comparaFecha(a.finObjetivo,b.finObjetivo)) {
-            return 0; 
-        }
-        if(comparaFecha(a.finObjetivo,b.finObjetivo)) {
-            return -1;
-        }
-        return 1;
-    });
+
 
     return (
         <View style={styles.body}>
@@ -69,9 +55,15 @@ const ObjetivosLista = ({navigation}) => {
                            />  
                         )}
                         keyExtractor={item => item.id}
+                        ListFooterComponent={(
+                            <View style={{height:80}} />
+                        )}
+                        showsVerticalScrollIndicator={false}
                     />
                     
+                   
                     <BtnFAB nameIcon='add' nav={goForm} />
+                    
                     
                 </>
             )}

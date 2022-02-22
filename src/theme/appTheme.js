@@ -7,6 +7,7 @@ export const colores = {
     // principal: '#332D73' #3bc5e2,
     principal: '#332D73',
     secundario:'#00B9DA',
+    bgLight: '#eef2fb',
     // blanco: '#ffe9ea',
     blanco: 'white',
     texto:'#123e56',
@@ -24,7 +25,8 @@ export const colores = {
 
     crecimiento:'#1DD3B0',
     familia:'#ffe84f',
-    salud:'#e0ff4f',
+    // #e0ff4f
+    salud:'#26bb77',
     amistad:'#fc9527',
     trabajo:'#153131',
     amor:'#CC2936',

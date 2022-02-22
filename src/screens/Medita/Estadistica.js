@@ -10,6 +10,7 @@ import {useEstadisticas} from '../../hooks/useEstadisticas';
 const Estadistica = () => {
     const {dataEmotions, entradas} = useEstadisticas();
 
+   
     const data = {
         dataSets: [
             {

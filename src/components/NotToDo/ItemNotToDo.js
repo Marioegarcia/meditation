@@ -1,16 +1,16 @@
-import moment from 'moment';
-import React, { memo,useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { TouchableOpacity, StyleSheet} from 'react-native';
 import {Card, Paragraph, RadioButton,Title} from 'react-native-paper';
+
 import { colores } from '../../theme/appTheme';
-import { adjust } from '../../utils/Dimentions';
+import { adjust, windowHeight } from '../../utils/Dimentions';
 
 
 
 
-export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCambioColor}) => {
+export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCambioColor,selection}) => {
         const checked = ['unchecked', 'checked'];
-        
+       
         const tipo = [
         'Te hace perder el tiempo',
         'Te estresa',
@@ -19,8 +19,11 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
         'No tienen que hacese',
         'No se puede controlar'
         ]
-    
+       
+       
+        
 
+        
         
         return (
             <>
@@ -33,7 +36,6 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
                     cambioColor === item.id && {
                         backgroundColor:'rgba(144,130,130,0.1)',
                         borderColor:'rgba(144,130,130,0.1)',
-                        borderRadius:8
                     }
                     ]}>
                         <RadioButton
@@ -41,23 +43,25 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
                             status={checked[item.done]}
                             onPress={() => cambioTarea(item)}
                             uncheckedColor={colores.purple}
-                            color={colores.purpleBG}
+                            color={colores.principal}
                         />
     
-                        <TouchableOpacity onLongPress={()=> {
+                        <TouchableOpacity 
+                        onLongPress={()=> {
                             setCambioColor(item.id)
                             openBarra(item)
                         }} 
+                        style={{flex:1}}
                         >
-                           
+                            
                             <Title
                                 style={[
                                     styles.texto,
                                     item.done === 1 && {
                                         textDecorationLine: 'line-through',
                                         fontWeight:'400',
-                                        fontStyle:'italic'
-                                       
+                                        fontStyle:'italic',
+                                        color:'grey'
                                     },
                                     
                                 ]}>
@@ -78,25 +82,37 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
 )
 
 const styles = StyleSheet.create({
+
+    card:{
+        borderRadius: 0,
+        marginVertical:5,
+        // borderColor:colores.purpleBG,
+        borderWidth:0.1,
+        marginHorizontal:20,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.30,
+        shadowRadius: 4.65,
+
+        elevation: 6,
+        
+    },
     container: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        borderRadius: 5,
         alignItems: 'center',
-        
-    },
-    card:{
-        borderRadius: 8,
-        marginVertical:5,
-        borderColor:colores.purpleBG,
-        borderWidth:0.3
+        height:windowHeight / 9
     },
     texto: {
-        fontSize: adjust(17),
-        fontStyle: 'italic',
-        color: colores.purple
+        fontSize: adjust(15),
+        
+        color: colores.principal
     },
     subtitulo:{
-        color:colores.purple
+        // color:colores.purple
+        fontSize: adjust(10)
     }
 });

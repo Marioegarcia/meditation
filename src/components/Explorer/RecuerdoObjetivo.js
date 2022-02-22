@@ -71,7 +71,8 @@ export const RecuerdoObjetivo = ({crearNueva}) => {
                                     {/* <Text style={styles.btnText} >Nuevo objetivo</Text> */}
                                 </View>
                             )}
-                            
+                        // numColumns={3}
+                        
                         />
                     </View>
             
@@ -90,8 +91,10 @@ const styles = StyleSheet.create({
     },
     objetivo: {
         width: (windowWidth * 90) / 100,
+       
         justifyContent:'center',
        
+        
     },
     header: {
         fontSize: adjust(16),
@@ -101,6 +104,8 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: adjust(16),
         color: colores.principal,
+       
+        
         
     },
     btnNew:{
