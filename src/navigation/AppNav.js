@@ -29,17 +29,17 @@ const AppNav = () => {
         
                 switch (route.name) {
                     case 'Explorer':
-                        iconName = 'home-filled';
+                        iconName = 'home';
                         break;
                     case 'DiarioScreen':
-                        iconName = 'nightlight-round';
+                        iconName = 'menu-book';
                         break;
                     case 'MeditaScreen':
-                        iconName = 'audiotrack'
+                        iconName = 'nights-stay'
                         break;
 
                     case 'SettingsScreen':
-                    iconName = 'menu'
+                    iconName = 'person'
                     break;
                     
                     default:

@@ -43,7 +43,7 @@ const SettingsScreen = () => {
                     
                     <Button onPress={logOut} >
                         
-                        <Icon name='logout' size={26} color={colores.amor} />
+                        <Icon name='logout' size={26}  />
                         
                     </Button>
                 </View>
