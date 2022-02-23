@@ -2,6 +2,9 @@ import React,{ createContext, useEffect, useReducer,useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SQLite from 'react-native-sqlite-storage';
 import { authReducer, AuthState } from "./authReducer";
+import { objetivoReducer } from "./objetivoReducer";
+import { ruedaReducer } from "./ruedaReducer";
+import { taskReducer } from "./taskReducer";
 
 
 
@@ -31,8 +34,10 @@ const authInicialState = {
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
-    const [state, dispatch] = useReducer(authReducer, authInicialState,);
+    const [state, dispatch] = useReducer(authReducer, authInicialState);
+    
     const [entradas, setEntradas] = useState([]);
+
     useEffect(() => {
        checkToken();
     }, []);
@@ -74,6 +79,7 @@ export const AuthProvider = ({children}) => {
     };
 
     const createTable = () => {
+        
         db.transaction((tx) => {
             // tx.executeSql("DROP TABLE IF EXISTS DiarioEntradas")
             tx.executeSql(
@@ -178,7 +184,17 @@ export const AuthProvider = ({children}) => {
         });
     }
 
-    
+    const eliminarCuenta = ()=> {
+        
+        db.transaction((tx) => {
+            tx.executeSql("DROP TABLE IF EXISTS DiarioEntradas");
+        })
+
+       
+        setEntradas([]);
+        createTable();
+        logOut();
+    }
 
     return (
         <AuthContext.Provider
@@ -191,7 +207,8 @@ export const AuthProvider = ({children}) => {
             getData,
             entradas,
             eliminarRegistro,
-            updateRegistro
+            updateRegistro,
+            eliminarCuenta
         }}
         >
             {children}

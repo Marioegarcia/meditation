@@ -15,7 +15,14 @@ export const ruedaReducer = (state,action) => {
                     status:'void',
                     
             }
-    
+        case 'Delete':
+            
+            return {
+                ...state,
+                ruedas:[],
+                status:'void',
+                        
+            }    
         default:
             return state;
     }

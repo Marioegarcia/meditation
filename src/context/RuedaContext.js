@@ -148,7 +148,16 @@ export const RuedaProvider = ({children}) => {
         });
     };
 
-    
+    const eliminarTablaRueda = () =>{
+        db.transaction((tx) => {
+            tx.executeSql("DROP TABLE IF EXISTS RuedaDeVida");
+        })
+        dispatch({
+            type:'Delete'
+        })
+
+        createTable();
+    }
     
     return (
         <RuedaContext.Provider
@@ -158,8 +167,7 @@ export const RuedaProvider = ({children}) => {
                 crearRueda,
                 deleteRueda,
                 upDateTodo,
-                // upDateTodo,
-                // upDateDone,
+                eliminarTablaRueda,
                 
             }}>
             {children}

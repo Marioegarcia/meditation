@@ -143,6 +143,14 @@ export const TaskProvider = ({children}) => {
         });
     };
 
+    const eliminarTablaTask = () => {
+        db.transaction((tx) => {
+            tx.executeSql("DROP TABLE IF EXISTS NoToDoList");
+        })
+        dispatch({type:'Delete'});
+        createTable();
+    }
+
     return (
         <TaskContext.Provider
             value={{
@@ -153,6 +161,7 @@ export const TaskProvider = ({children}) => {
                 deleteNotToDo,
                 upDateTodo,
                 upDateDone,
+                eliminarTablaTask
                 
             }}>
             {children}

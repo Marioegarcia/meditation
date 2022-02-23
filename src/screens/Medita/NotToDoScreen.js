@@ -42,15 +42,7 @@ const NotToDoScreen = ({navigation}) => {
    
   
 
-    noToDo.sort((a, b) => {
-    if(a.done == b.done) {
-        return 0; 
-    }
-    if(a.done < b.done) {
-        return -1;
-    }
-    return 1;
-    });
+   
 
     
     if(status === 'checking') return <LoadingScreen/>

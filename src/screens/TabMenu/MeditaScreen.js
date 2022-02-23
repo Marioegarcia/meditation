@@ -16,7 +16,7 @@ const data = [
     }, 
     {
         id: 2,
-        titulo: 'Estados de ánimo',
+        titulo: 'Contadar de Estados',
         img: require('../../assets/img/statsBarras.png'),
         url:'Estadistica'
     },

@@ -152,6 +152,20 @@ export const ObjetivosProvider = ({children}) => {
             );
         });
     }
+
+    const eliminarTablaObjetivos = () =>{
+        db.transaction((tx) => {
+  
+            tx.executeSql("DROP TABLE IF EXISTS Objetivos");
+           
+        })
+
+        dispatch({
+            type:'Delete'
+        })
+
+        createTable();
+    }
     
     return (
         <ObjetivosContext.Provider
@@ -160,7 +174,8 @@ export const ObjetivosProvider = ({children}) => {
                 crearObjetivo,
                 eliminarObjetivo,
                 updateobjetivo,
-                updateDone
+                updateDone,
+                eliminarTablaObjetivos
             }}>
             {children}
         </ObjetivosContext.Provider>

@@ -18,6 +18,14 @@ export const objetivoReducer = (state,action) => {
                     status:'void',
                     
             }
+        case 'Delete':
+            
+            return {
+                ...state,
+                objetivos:[],
+                status:'void',
+                        
+            }
     
         default:
             return state;

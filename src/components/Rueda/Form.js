@@ -109,18 +109,19 @@ const Form = ({hideModal,guardarRueda,rueda}) => {
                             flexDirection: 'row',
                             justifyContent: 'space-evenly',
                         }}>
-                        <Button
-                            style={{marginVertical: 10}}
-                            mode="contained"
-                            onPress={()=> guardarRueda(form)}>
-                            Guardar
-                        </Button>
+                        
                         <Button
                             style={{marginVertical: 10}}
                             mode="contained"
                             onPress={hideModal}
                             >
                             Cancelar
+                        </Button>
+                        <Button
+                            style={{marginVertical: 10}}
+                            mode="contained"
+                            onPress={()=> guardarRueda(form)}>
+                            Guardar
                         </Button>
                     </View>
         </View>
