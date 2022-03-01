@@ -14,6 +14,7 @@ import RuedaVidaScreen from '../screens/Medita/RuedaVidaScreen';
 import { ObjetivoFormScreen } from '../screens/ObjetivoFormScreen';
 import { colores } from '../theme/appTheme';
 import { TimeOutScreen } from '../screens/Medita/TimeOutScreen';
+import { CrearCitaScreen } from '../screens/Medita/CrearCitaScreen';
 
 
 
@@ -52,6 +53,8 @@ export const StackApp = () => {
         <Stack.Screen name="ObjetivoFormScreen" component={ ObjetivoFormScreen } />
 
         <Stack.Screen name="TimeOutScreen" component={ TimeOutScreen } />
+
+        <Stack.Screen name="CrearCitaScreen" component={ CrearCitaScreen } />
      
         
     </Stack.Navigator>

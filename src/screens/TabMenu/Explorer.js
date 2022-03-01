@@ -94,7 +94,6 @@ const styles = StyleSheet.create({
     scrollContent:{
         backgroundColor:colores.blanco,
         
-        
     },
     container:{        
         paddingVertical:15,
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
         borderRadius:5,
         marginVertical:6,
         overflow:'hidden',
-        height:windowHeight / 5,
+        // height:windowHeight / 5,
         
         
     },

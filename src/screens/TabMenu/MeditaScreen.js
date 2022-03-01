@@ -38,6 +38,12 @@ const data = [
         img: require('../../assets/img/clock.png'),
         url:'TimeOutScreen'
     },
+    {
+        id: 6,
+        titulo: '¡Motívame!',
+        img: require('../../assets/img/motivacion.png'),
+        url:'CrearCitaScreen'
+    },
 ]
 const MeditaScreen = memo(({navigation}) => {
 

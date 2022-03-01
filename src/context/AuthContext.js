@@ -1,10 +1,10 @@
 import React,{ createContext, useEffect, useReducer,useState } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SQLite from 'react-native-sqlite-storage';
-import { authReducer, AuthState } from "./authReducer";
-import { objetivoReducer } from "./objetivoReducer";
-import { ruedaReducer } from "./ruedaReducer";
-import { taskReducer } from "./taskReducer";
+import { authReducer } from "./authReducer";
+
+import apiDB from "../api/apiDB";
+import moment from "moment";
 
 
 
@@ -24,7 +24,8 @@ export const db = SQLite.openDatabase(
 const authInicialState = {
     status:'checking',
     nombre: null, 
-    errorMessage: ''
+    errorMessage: '',
+    citas:[]
 }
 
 
@@ -37,6 +38,7 @@ export const AuthProvider = ({children}) => {
     const [state, dispatch] = useReducer(authReducer, authInicialState);
     
     const [entradas, setEntradas] = useState([]);
+   
 
     useEffect(() => {
        checkToken();
@@ -48,8 +50,26 @@ export const AuthProvider = ({children}) => {
     }, [])
 
     useEffect(() => {
-        getData()
+        getData();
+       
+    }, []);
+
+    useEffect(() => {
+        citasGet();
     }, [])
+    
+
+
+    const citasGet = async() => {
+        const {data} = await apiDB.get('/notas');
+        dispatch({
+            type:'getCitas',
+            payload:{
+                citas: data.cita,
+            }
+        });
+
+    }
 
     const checkToken = async() => {
         const token = await AsyncStorage.getItem('nombre');

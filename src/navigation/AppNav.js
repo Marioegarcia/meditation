@@ -32,10 +32,10 @@ const AppNav = () => {
                         iconName = 'home';
                         break;
                     case 'DiarioScreen':
-                        iconName = 'menu-book';
+                        iconName = 'book';
                         break;
                     case 'MeditaScreen':
-                        iconName = 'nights-stay'
+                        iconName = 'self-improvement'
                         break;
 
                     case 'SettingsScreen':
