@@ -1,4 +1,4 @@
-package com.lovemind;
+package com.megh.lovemind;
 
 import android.app.Application;
 import android.content.Context;

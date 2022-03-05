@@ -1,4 +1,4 @@
-package com.lovemind;
+package com.megh.lovemind;
 
 import com.facebook.react.ReactActivity;
 
