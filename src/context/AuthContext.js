@@ -5,6 +5,8 @@ import { authReducer } from "./authReducer";
 
 import apiDB from "../api/apiDB";
 import moment from "moment";
+import { frases } from "../utils/Utilis";
+import { NotificacionAlerta } from "../components/NotificacionAlerta";
 
 
 
@@ -61,13 +63,39 @@ export const AuthProvider = ({children}) => {
 
 
     const citasGet = async() => {
-        const {data} = await apiDB.get('/notas');
-        dispatch({
-            type:'getCitas',
-            payload:{
-                citas: data.cita,
-            }
-        });
+        
+        try {
+            const {data} = await apiDB.get('/notas');
+            dispatch({
+                type:'getCitas',
+                payload:{
+                    citas: data.cita,
+                }
+            });
+        } catch (error) {
+            const aleatorio = Math.round(Math.random() * frases.length);
+ 
+            dispatch({
+                type:'getCitas',
+                payload:{
+                    citas: frases[aleatorio],
+                   
+                }
+            });
+        }
+       
+
+    }
+
+    const createQuote = async(quote) => {
+        
+        try {
+            await apiDB.post('/notas',quote);
+        } catch (error) {
+            Alert.alert('Error al guardar la nota...')
+            
+        }
+       
 
     }
 
@@ -228,7 +256,9 @@ export const AuthProvider = ({children}) => {
             entradas,
             eliminarRegistro,
             updateRegistro,
-            eliminarCuenta
+            eliminarCuenta,
+            citasGet,
+            createQuote
         }}
         >
             {children}

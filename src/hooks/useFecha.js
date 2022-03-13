@@ -14,7 +14,7 @@ export const useFecha = () => {
         if (hora < 12) {
             setMensaje('Buenos Dias');
         } else if (hora >= 12 && hora <= 19) {
-            setMensaje('Buenas Tarde');
+            setMensaje('Buenas Tardes');
         } else {
             setMensaje('Buenas Noches');
         }

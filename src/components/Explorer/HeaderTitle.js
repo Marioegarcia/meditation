@@ -31,10 +31,11 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'flex-start',
         paddingVertical:10,
-        paddingHorizontal:10
+        // paddingHorizontal:10
+        marginVertical:10
     },
     titulo: {
-        fontSize:adjust(30),
+        fontSize:adjust(25),
         fontWeight:'bold',
         color:colores.principal
     },

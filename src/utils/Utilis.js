@@ -44,55 +44,55 @@ export const emociones = [
 
 export const frases = [
     {
-        frase:'El único modo de hacer un gran trabajo es amar lo que haces',
+        nota:'El único modo de hacer un gran trabajo es amar lo que haces',
         autor:'Steve Jobs'
     },
     {
-        frase:'Nunca pienso en las consecuencias de fallar un gran tiro… cuando se piensa en las consecuencias se está pensando en un resultado negativo',
+        nota:'Nunca pienso en las consecuencias de fallar un gran tiro… cuando se piensa en las consecuencias se está pensando en un resultado negativo',
         autor:'Michael Jordan'
     },
     {
-        frase:'El dinero no es la clave del éxito; la libertad para poder crear lo es',
+        nota:'El dinero no es la clave del éxito; la libertad para poder crear lo es',
         autor:'Nelson Mandela'
     },
     {
-        frase:'Cuanto más duramente trabajo, más suerte tengo',
+        nota:'Cuanto más duramente trabajo, más suerte tengo',
         autor:'Gary Player'
     },
     {
-        frase:'La inteligencia consiste no sólo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica',
+        nota:'La inteligencia consiste no sólo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica',
         autor:'Aristóteles'
     },
     {
-        frase:'El trabajo duro hace que desaparezcan las arrugas de la mente y el espíritu',
+        nota:'El trabajo duro hace que desaparezcan las arrugas de la mente y el espíritu',
         autor:'Helena Rubinstein '
     },
     {
-        frase:'Cuando algo es lo suficientemente importante, lo haces incluso si las probabilidades de que salga bien no te acompañan',
+        nota:'Cuando algo es lo suficientemente importante, lo haces incluso si las probabilidades de que salga bien no te acompañan',
         autor:'Elon Musk'
     },
     {
-        frase:'Escoge un trabajo que te guste, y nunca tendrás que trabajar ni un solo día de tu vida',
+        nota:'Escoge un trabajo que te guste, y nunca tendrás que trabajar ni un solo día de tu vida',
         autor:'Confucio'
     },
     {
-        frase:'Sé el cambio que quieres ver en el mundo',
+        nota:'Sé el cambio que quieres ver en el mundo',
         autor:'Mahatma Gandhi'
     },
     {
-        frase:'No se trata de si van a derribarte, se trata de si vas a levantarte cuando lo hagan',
+        nota:'No se trata de si van a derribarte, se trata de si vas a levantarte cuando lo hagan',
         autor:'Vince Lombardi'
     },
     {
-        frase:'Nadie puede hacerte sentir inferior sin tu consentimiento',
+        nota:'Nadie puede hacerte sentir inferior sin tu consentimiento',
         autor:'Eleanor Roosevelt'
     },
     {
-        frase:'Qué maravilloso es que nadie tenga que esperar ni un segundo para empezar a mejorar el mundo',
+        nota:'Qué maravilloso es que nadie tenga que esperar ni un segundo para empezar a mejorar el mundo',
         autor:'Ana Frank'
     },
     {
-        frase:'Tu futuro depende de lo que hagas hoy, no mañana',
+        nota:'Tu futuro depende de lo que hagas hoy, no mañana',
         autor:'Anonimo'
     }
 ]

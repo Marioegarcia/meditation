@@ -7,7 +7,11 @@ export const colores = {
     // principal: '#332D73' #3bc5e2,
     principal: '#332D73',
     secundario:'#00B9DA',
+   
     bgLight: '#eef2fb',
+    bgLight2: '#edf6f7',
+    bgLight3: '#E3F8FD',
+    
     // blanco: '#ffe9ea',
     blanco: 'white',
     texto:'#123e56',

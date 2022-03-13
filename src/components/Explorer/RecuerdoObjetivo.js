@@ -6,29 +6,22 @@ import {ObjetivosContext} from '../../context/ObjetivosContext';
 import {ActivityIndicator, Subheading} from 'react-native-paper';
 import {adjust, windowWidth} from '../../utils/Dimentions';
 import {colores} from '../../theme/appTheme';
+import { useFecha } from '../../hooks/useFecha';
 
 
 
 export const RecuerdoObjetivo = ({crearNueva}) => {
     const {objetivos, status} = useContext(ObjetivosContext);
-   
+    const {formatFecha} = useFecha()
     if (status === 'checking') return ( <ActivityIndicator size={60} /> )
     
-   
+    
     return (
         <>
             <View style={styles.container}>
                 <Image
                     source={require('../../assets/img/aro.png')}
-                    style={{
-                        width: (windowWidth * 30) / 100,
-                        height: (windowWidth * 30) / 100,
-                        position: 'absolute',
-                        right: -20,
-                        opacity: 0.1,
-                        bottom:0,
-                        
-                    }}
+                    style={styles.img}
                 />
                 <Text style={styles.header}>Objetivo</Text>
 
@@ -42,6 +35,10 @@ export const RecuerdoObjetivo = ({crearNueva}) => {
                                     <Subheading style={styles.titulo}  >
                                     {item.titulo}
                                     </Subheading>
+                                    <Subheading  style={styles.subtitulo} >
+                                    {formatFecha(item.finObjetivo,'dddd, ')}
+                                    {formatFecha(item.finObjetivo,'LL')}
+                                    </Subheading>
                                 </View>
                             )}
                             horizontal={true}
@@ -53,6 +50,7 @@ export const RecuerdoObjetivo = ({crearNueva}) => {
                                 {
                                     justifyContent:'center',
                                     alignItems:'center',
+                                    height:100
                                 }
                                 ]}>
                                     
@@ -84,16 +82,21 @@ export const RecuerdoObjetivo = ({crearNueva}) => {
 const styles = StyleSheet.create({
     container: {
         marginVertical:10,
-        paddingHorizontal:10
+        paddingHorizontal:10,
+        
     },
     containerList: {
         alignItems:'center',
+        justifyContent:'center',
+        
     },
     objetivo: {
-        width: (windowWidth * 90) / 100,
+        width: (windowWidth * 88) / 100,
+        justifyContent:'space-between',
+        // height:(windowWidth * 27) / 100,
+        top:5,
        
-        justifyContent:'center',
-       
+        
         
     },
     header: {
@@ -103,18 +106,19 @@ const styles = StyleSheet.create({
     },
     titulo: {
         fontSize: adjust(16),
-        color: colores.principal,
-       
+        color: colores.principal, 
         
-        
+    },
+    subtitulo:{
+        fontSize: adjust(11),
+        color: colores.texto, 
     },
     btnNew:{
         borderColor: colores.principal,
         borderRadius: 15,
         borderWidth: 2,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding:6
+        padding:6,
+        
         
     },
     btnText: {
@@ -122,4 +126,13 @@ const styles = StyleSheet.create({
         fontSize: adjust(10),
         // fontFamily: 'serif',
     },
+    img:{
+        width: (windowWidth * 30) / 100,
+        height: (windowWidth * 30) / 100,
+        position: 'absolute',
+        right: -20,
+        opacity: 0.1,
+        bottom:0,
+        
+    }
 });

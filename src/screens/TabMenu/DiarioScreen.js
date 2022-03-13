@@ -32,7 +32,7 @@ const DiarioScreen = ({navigation}) => {
                 <Titulos texto={'Diario de emociones'} />
             </View>
 
-            <BackgroundImage />
+            
 
             {entradas.length == 0 ? (
                 

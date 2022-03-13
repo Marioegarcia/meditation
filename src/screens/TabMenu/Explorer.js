@@ -1,8 +1,8 @@
 import React from 'react'
 import { ScrollView, StyleSheet, TouchableOpacity, View,Text } from 'react-native'
-import  Icon  from 'react-native-vector-icons/MaterialIcons'
+
 import { AccesoDirectoHome } from '../../components/AccesoDirectoHome'
-import { AccesoDirecto } from '../../components/Explorer/AccesoDirecto'
+
 
 
 
@@ -11,7 +11,7 @@ import { RecuerdoObjetivo } from '../../components/Explorer/RecuerdoObjetivo'
 import { Reflexion } from '../../components/Explorer/Reflexion'
 
 import { colores } from '../../theme/appTheme'
-import { adjust, windowHeight } from '../../utils/Dimentions'
+import { adjust } from '../../utils/Dimentions'
 
 
 
@@ -36,20 +36,21 @@ const Explorer = ({ navigation }) => {
 
                     <View style={[styles.content,
                     {
-                        backgroundColor:'#f7f6fb'
+                        backgroundColor:colores.bgLight
                     }]} >
                         <Reflexion/>
                     </View>
 
                     <View style={[styles.content,
                     {
-                        backgroundColor:'#edf6f7'
+                        backgroundColor:colores.bgLight2,
+                        
                     }]} >
                         <RecuerdoObjetivo crearNueva={crearNueva} />
                     </View>
 
                     
-                    <View style={[styles.content,{backgroundColor:'#E3F8FD'}]} >
+                    <View style={[styles.content,{backgroundColor:colores.bgLight3}]} >
                         <Text style={styles.subtitulo} >Accesos directos</Text>
                         <View style={styles.access} >
 
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
         borderRadius:5,
         marginVertical:6,
         overflow:'hidden',
-        // height:windowHeight / 5,
+        minHeight:140
         
         
     },

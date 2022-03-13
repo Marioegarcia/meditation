@@ -1,9 +1,8 @@
 import React, { memo } from 'react'
-import { FlatList, Image, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { adjust, windowHeight, windowWidth } from '../../utils/Dimentions';
 import { Card } from 'react-native-paper';
 import Titulos from '../../components/Titulos'
-import BackgroundImage from '../../components/BackgroundImage'
 
 
 
@@ -44,6 +43,7 @@ const data = [
         img: require('../../assets/img/motivacion.png'),
         url:'CrearCitaScreen'
     },
+    
 ]
 const MeditaScreen = memo(({navigation}) => {
 
@@ -51,7 +51,7 @@ const MeditaScreen = memo(({navigation}) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.navigate(item.url)}
-           activeOpacity={0.6}
+           activeOpacity={0.9}
            style={styles.btnCard}
         >
             <Card 
@@ -65,11 +65,7 @@ const MeditaScreen = memo(({navigation}) => {
                     />
                   
                     
-                    <View style={{
-                        // justifyContent:'center',
-                        // alignItems:'center',
-                       
-                        }}>
+                    <View>
                         <Text style={ styles.titulo }>
                             {item.titulo}
                         </Text>
@@ -85,7 +81,7 @@ const MeditaScreen = memo(({navigation}) => {
 
     return (
         <View style={{flex:1}} >
-            <BackgroundImage/>
+            
            
             
             
@@ -93,21 +89,19 @@ const MeditaScreen = memo(({navigation}) => {
                 <FlatList
                 data={ data }
                 ListHeaderComponent={(
-                    <ImageBackground
-                    source={require('../../assets/img/pastel.png')}
-                    style={styles.cabecera}
-                    >
-                        <View  >
+                    
+                        <View style={styles.cabecera} >
                             <Titulos texto={'Zona de Meditación'} />
                         </View>
-                    </ImageBackground>
+                    
                 )}
-                renderItem={ ( item ) =>  renderItem(item )}
+                // renderItem={ ( item ) =>  renderItem(item )}
+                renderItem={  renderItem }
                 keyExtractor={ (item) => item.id.toString() }
                 numColumns={ 2 }
                 showsVerticalScrollIndicator={ false }
                 contentContainerStyle={{
-                    alignItems:'center',
+                    alignItems:'center'
                 }}
                 />   
             
@@ -127,13 +121,13 @@ const styles = StyleSheet.create({
     },
     btnCard:{
         marginHorizontal:5,
-        marginVertical:5,
-        // width: windowWidth * 45 / 100,
+        marginVertical:8,
+       
         
     },
     card: {
         height: windowHeight * 20 / 100,
-        width: windowHeight * 20 / 100,
+        width: windowWidth * 45 / 100,
         borderRadius: 10,
         
     },

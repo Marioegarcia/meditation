@@ -7,7 +7,7 @@ import { adjust, windowWidth } from '../utils/Dimentions'
 
 export const AccesoDirectoHome = ({texto,icono,nav}) => {
   return (
-    <TouchableOpacity onPress={nav} >
+    <TouchableOpacity onPress={nav} activeOpacity={0.9} >
         <View style={styles.content} >
             <Icon name={icono}  size={adjust(14)} color={colores.purple} />
             <Text style={styles.texto} >{texto}</Text>

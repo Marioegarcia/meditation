@@ -4,7 +4,7 @@ import {Image, ScrollView, StyleSheet, Text, View,Alert} from 'react-native';
 import {Button, RadioButton} from 'react-native-paper';
 import { TaskContext } from '../../context/TaskContext';
 import {useForm} from '../../hooks/useForm';
-import { useNoToDo } from '../../hooks/useNoToDo';
+
 import {windowWidth} from '../../utils/Dimentions';
 import ControlInput from '../Diario/ControlInput';
 

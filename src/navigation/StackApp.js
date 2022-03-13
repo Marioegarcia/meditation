@@ -15,6 +15,7 @@ import { ObjetivoFormScreen } from '../screens/ObjetivoFormScreen';
 import { colores } from '../theme/appTheme';
 import { TimeOutScreen } from '../screens/Medita/TimeOutScreen';
 import { CrearCitaScreen } from '../screens/Medita/CrearCitaScreen';
+import { NewQuote } from '../screens/Quotes/NewQuote';
 
 
 
@@ -55,6 +56,7 @@ export const StackApp = () => {
         <Stack.Screen name="TimeOutScreen" component={ TimeOutScreen } />
 
         <Stack.Screen name="CrearCitaScreen" component={ CrearCitaScreen } />
+        <Stack.Screen name="NewQuote" component={ NewQuote } />
      
         
     </Stack.Navigator>
