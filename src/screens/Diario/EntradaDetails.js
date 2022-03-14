@@ -63,18 +63,18 @@ const EntradaDetails = ({navigation, route}) => {
             id:3,
             emocion:item.emocion
         },
-        {
-            contenido: item.respuesta,  
-            title: 'Respuesta',
-            id:4,
-            emocion:item.emocion
-        },
-        {
-            contenido: item.sugerencia,  
-            title: 'Sugerencia', 
-            id:5,
-            emocion:item.emocion  
-        },
+        // {
+        //     contenido: item.respuesta,  
+        //     title: 'Respuesta',
+        //     id:4,
+        //     emocion:item.emocion
+        // },
+        // {
+        //     contenido: item.sugerencia,  
+        //     title: 'Sugerencia', 
+        //     id:5,
+        //     emocion:item.emocion  
+        // },
     ]
 
     const goBack = () => {
@@ -86,7 +86,7 @@ const EntradaDetails = ({navigation, route}) => {
     const ItemSlide = ({item}) => {
     
         return (
-            <View style={{justifyContent:'center', marginTop:40}} >
+            <View style={{ marginTop:40}} >
              
                 <Titulos texto={item.title} />
 
@@ -181,7 +181,7 @@ export default EntradaDetails;
 
 const styles = StyleSheet.create({
     contenedor: {
-        paddingHorizontal: 5,
+        // paddingHorizontal: 5,
         flex: 1,
         paddingTop: 10,
     },

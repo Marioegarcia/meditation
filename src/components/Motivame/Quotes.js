@@ -22,7 +22,7 @@ export const Quotes = () => {
     }
   return (
     <View style={styles.content} >
-      <Text style={styles.quotes} >{citas.nota}</Text>
+      <Text style={styles.quotes} >{citas.nota}.</Text>
       <Text style={styles.autor} >- {citas.autor}</Text>
 
       

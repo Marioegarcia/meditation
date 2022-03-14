@@ -28,10 +28,7 @@ const NuevaEntrada = ({navigation}) => {
 
         if (
             situacion.trim() === '' ||
-            respuesta.trim() === '' ||
-            pensamiento.trim() === '' ||
-            respuesta.trim() === '' ||
-            sugerencia.trim() === ''
+            pensamiento.trim() === '' 
         ) {
             Alert.alert('Faltan datos por rellenar.');
         } else {
@@ -70,18 +67,18 @@ const NuevaEntrada = ({navigation}) => {
             title: 'Emoción',
             id: 3,
         },
-        {
-            component: <ControlInput onChange={onChange} input="respuesta" />,
-            ask: '¿Como reacciónaste a lo ocurrido?',
-            title: 'Respuesta',
-            id: 4,
-        },
-        {
-            component: <ControlInput onChange={onChange} input="sugerencia" />,
-            ask: '¿Que indica esta emoción?',
-            title: 'Sugerencia',
-            id: 5,
-        },
+        // {
+        //     component: <ControlInput onChange={onChange} input="respuesta" />,
+        //     ask: '¿Como reacciónaste a lo ocurrido?',
+        //     title: 'Respuesta',
+        //     id: 4,
+        // },
+        // {
+        //     component: <ControlInput onChange={onChange} input="sugerencia" />,
+        //     ask: '¿Que indica esta emoción?',
+        //     title: 'Sugerencia',
+        //     id: 5,
+        // },
     ];
 
     return (
@@ -120,6 +117,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginHorizontal: 20,
         alignItems: 'center',
-        marginBottom: 22,
+        marginVertical: 22,
+        
     },
 });
