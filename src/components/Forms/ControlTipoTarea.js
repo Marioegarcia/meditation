@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native'
+import { colores } from '../../theme/appTheme'
 
 const ControlTipoTarea = () => {
 
@@ -43,7 +44,7 @@ const ControlTipoTarea = () => {
             data={tipoTarea}
             renderItem={({item})=>(
                 <View key={item.id} style={styles.toggle} >
-                        <Text> {item.titulo} </Text>
+                        <Text  style={{color:colores.principal}} > {item.titulo} </Text>
 
                         <TouchableOpacity 
                         

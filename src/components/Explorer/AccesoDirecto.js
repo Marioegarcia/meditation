@@ -1,48 +1,45 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import {FlatList, Image, StyleSheet, Text, View} from 'react-native';
 import {ToggleButton} from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { colores } from '../../theme/appTheme';
 import { adjust, windowWidth } from '../../utils/Dimentions';
+import { emociones } from '../../utils/Utilis';
 
 export const AccesoDirecto = () => {
-    const data = [
-        {
-            name: 'Feliz',
-            value: 0,
-            img: require('../../assets/img/emotions/feliz.png'),
-        },
-        {
-            name: 'Indiferente',
-            value: 1,
-            img: require('../../assets/img/emotions/indiferente.png'),
-        },
-        {
-            name: 'Triste',
-            value: 2,
-            img: require('../../assets/img/emotions/triste.png'),
-        },
-        {
-            name: 'Desagrado',
-            value: 3,
-            img: require('../../assets/img/emotions/desagrado.png'),
-        },
-        {
-            name: 'Miedo',
-            value: 4,
-            img: require('../../assets/img/emotions/miedo.png'),
-        },
-        {
-            name: 'Enojo',
-            value: 5,
-            img: require('../../assets/img/emotions/enojo.png'),
-        },
-    ];
-    const [value, setValue] = React.useState(null);
 
-    const estadoAnimo = (e) => {
+    const [value, setValue] = React.useState(null);
+    const [onChange, setOnChange] = React.useState('');
+
+    const estadoAnimo = async(e) => {
         
-        setValue(e);
+        // console.log(e);
+        await AsyncStorage.setItem('sentimiento',e.name);
+        // await AsyncStorage.setItem('valueSentimiento', e.toString());
+        setOnChange(e.name)
+       
+        
     }
+
+    const onButtonToggle = () => {
+        
+        AsyncStorage.getItem('sentimiento').then((value) => {
+            if (value) {
+                setValue(value);
+            }
+        });
+        
+      };
+
+    
+    
+       
+    useEffect(() => {
+        onButtonToggle(); 
+    }, [onChange])
+    
+   
+  
 
     return (
         <View style={styles.container}>
@@ -50,10 +47,12 @@ export const AccesoDirecto = () => {
            
                 <ToggleButton.Group
                     onValueChange={value => setValue(value)}
-                    value={value}>
+                    value={value}
+                    
+                >
                     <FlatList
                         initialScrollIndex={value}
-                        data={data}
+                        data={emociones}
                         keyExtractor={item => item.value}
                         renderItem={({item}) => (
                             <>
@@ -71,7 +70,10 @@ export const AccesoDirecto = () => {
                                     )}
                                     value={item.value}
                                     style={styles.toggle}
-                                    onPress={()=>estadoAnimo(item.value)}
+                                    onPress={()=>estadoAnimo(item)}
+                                    status={value === item.name ? 'checked' : 'unchecked' }
+                                    color={item.colores}
+
                                 />
                             </>
                         )}
@@ -100,14 +102,15 @@ const styles = StyleSheet.create({
         height:windowWidth / 6,
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:20
+        borderRadius:20,
+        
     },
     img: {
         height: windowWidth / 13,
         width: windowWidth / 13,
     },
     txt:{
-        fontSize:adjust(9),
+        fontSize:adjust(6),
         color:colores.principal,
         textAlign:'center'
     }

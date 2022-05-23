@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     marginVertical: 10,
+    color:colores.principal
   },
   btn: {
     backgroundColor: colores.pinkMate,

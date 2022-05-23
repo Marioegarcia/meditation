@@ -3,6 +3,7 @@ import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react
 import { adjust, windowHeight, windowWidth } from '../../utils/Dimentions';
 import { Card } from 'react-native-paper';
 import Titulos from '../../components/Titulos'
+import { colores } from '../../theme/appTheme';
 
 
 
@@ -123,12 +124,11 @@ const styles = StyleSheet.create({
         marginHorizontal:5,
         marginVertical:8,
        
-        
     },
     card: {
         height: windowHeight * 20 / 100,
         width: windowWidth * 45 / 100,
-        borderRadius: 10,
+        // borderRadius: 10,
         
     },
     cardContainer: { 
@@ -139,8 +139,10 @@ const styles = StyleSheet.create({
         
     },
     titulo:{
-        fontSize: adjust(16),
+        fontSize: adjust(10),
         fontWeight: 'bold',
+        color:colores.purpleBG,
+        textAlign:'center'
     },
     img:{
         width: '60%',

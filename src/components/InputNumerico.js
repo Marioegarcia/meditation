@@ -3,6 +3,7 @@ import React from 'react';
 import {TextInput} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { adjust } from '../utils/Dimentions';
+import { colores } from '../theme/appTheme';
 
 export const InputNumerico = ({time, setTime}) => {
     const onChange = number => {
@@ -45,11 +46,11 @@ export const InputNumerico = ({time, setTime}) => {
             <View style={styles.contentIcon}>
 
                 <TouchableOpacity style={[styles.btn]} onPress={mas}>
-                    <Icon style={styles.icono} name="expand-less" size={25} />
+                    <Icon style={styles.icono} name="expand-less" size={25} color={colores.principal} />
                 </TouchableOpacity>
 
                 <TouchableOpacity style={[styles.btn]} onPress={menos}>
-                    <Icon style={styles.icono} name="expand-more" size={25} />
+                    <Icon style={styles.icono} name="expand-more" size={25} color={colores.principal}/>
                 </TouchableOpacity>
 
             </View>

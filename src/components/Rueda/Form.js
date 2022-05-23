@@ -138,6 +138,7 @@ const styles = StyleSheet.create({
         marginVertical:windowHeight * 1 / 100
     },
     label:{
-        fontSize:adjust(12)
+        fontSize:adjust(12),
+        color:colores.purpleBG
     }
 });

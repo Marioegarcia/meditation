@@ -5,7 +5,7 @@ import { authReducer } from "./authReducer";
 
 import apiDB from "../api/apiDB";
 import moment from "moment";
-import { frases } from "../utils/Utilis";
+import { frases, getSentimiento } from "../utils/Utilis";
 import { NotificacionAlerta } from "../components/NotificacionAlerta";
 
 
@@ -48,7 +48,6 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         createTable();
-       
     }, [])
 
     useEffect(() => {
@@ -63,9 +62,11 @@ export const AuthProvider = ({children}) => {
 
 
     const citasGet = async() => {
-        
+        const sentimiento = await getSentimiento();
+        console.log({sentimiento});
         try {
-            const {data} = await apiDB.get('/notas');
+            const {data} = await apiDB.get('/notas',sentimiento);
+            
             dispatch({
                 type:'getCitas',
                 payload:{

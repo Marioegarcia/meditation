@@ -1,5 +1,5 @@
 import { colores } from '../theme/appTheme'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export const emociones = [ 
@@ -96,3 +96,10 @@ export const frases = [
         autor:'Anonimo'
     }
 ]
+
+
+
+export const getSentimiento = async() => {
+    const sentimiento =  await AsyncStorage.getItem('sentimiento');
+    return sentimiento;
+}   

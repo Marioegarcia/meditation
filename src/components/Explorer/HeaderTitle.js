@@ -1,5 +1,6 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
-import React,{useContext} from 'react'
+import React,{useContext,useEffect} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import {AuthContext} from '../../context/AuthContext';
 import { useFecha } from '../../hooks/useFecha';

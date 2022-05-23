@@ -226,6 +226,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: adjust(13),
+        color:colores.purpleBG
     },
     inputs: {
         backgroundColor: 'white',

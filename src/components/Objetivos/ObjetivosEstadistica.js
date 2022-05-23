@@ -4,10 +4,15 @@ import { PieChart } from 'react-native-charts-wrapper';
 import { ObjetivosContext } from '../../context/ObjetivosContext';
 import { colores } from '../../theme/appTheme';
 import { adjust } from '../../utils/Dimentions';
+import SinData from '../SinData';
 
 const ObjetivosEstadistica = () => {
     const {objetivos} = useContext(ObjetivosContext);
     
+
+
+    if (!objetivos)  return (<SinData texto={'Aún no cuentas con objetivos'} />);
+
     const concluidas =  objetivos.filter(fin => fin.done == 1)
   
     const inconcluidas = objetivos.filter(fin => fin.done == 0)

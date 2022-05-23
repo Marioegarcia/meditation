@@ -4,6 +4,7 @@ import {Image, ScrollView, StyleSheet, Text, View,Alert} from 'react-native';
 import {Button, RadioButton} from 'react-native-paper';
 import { TaskContext } from '../../context/TaskContext';
 import {useForm} from '../../hooks/useForm';
+import { colores } from '../../theme/appTheme';
 
 import {windowWidth} from '../../utils/Dimentions';
 import ControlInput from '../Diario/ControlInput';
@@ -109,7 +110,7 @@ const NewNotToDo = ({navigation,route}) => {
         <View>
             <ScrollView>
                 <View style={styles.inputs}>
-                    <Text>Tarea:</Text>
+                    <Text  style={{color:colores.principal}}>Tarea:</Text>
                     <ControlInput
                         onChange={onChange}
                         input={'todo'}
@@ -118,7 +119,7 @@ const NewNotToDo = ({navigation,route}) => {
                     />
                 </View>
                 <View style={styles.tipos}>
-                    <Text>Tipo de tarea</Text>
+                    <Text  style={{color:colores.principal}}>Tipo de tarea</Text>
                     <RadioButton.Group
                         onValueChange={newValue => onChange(newValue, 'tipo')}
                         value={form.tipo}>

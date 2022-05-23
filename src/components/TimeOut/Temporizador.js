@@ -74,15 +74,15 @@ export const Temporizador = memo(({api, setTemporizador, formatted,completed,tot
                         <View style={styles.temporizador}>
                     <View style={styles.inp}>
                         <InputNumerico time={horas} setTime={setHoras} />
-                        <Text>Horas</Text>
+                        <Text style={styles.label} >Horas</Text>
                     </View>
                     <View style={styles.inp}>
                         <InputNumerico time={minutos} setTime={setMinutos} />
-                        <Text>Minutos</Text>
+                        <Text style={styles.label}>Minutos</Text>
                     </View>
                     <View style={styles.inp}>
                         <InputNumerico time={segundos} setTime={setSegundos} />
-                        <Text>Segundos</Text>
+                        <Text style={styles.label}>Segundos</Text>
                     </View>
                 </View>
                     )
@@ -135,6 +135,9 @@ const styles = StyleSheet.create({
     contador: {
         fontSize: adjust(55),
         color: 'black',
+    },
+    label:{
+        color:colores.principal
     },
     temporizador: {
         flexDirection: 'row',

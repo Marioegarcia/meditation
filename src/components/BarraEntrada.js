@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import { Menu } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { colores } from '../theme/appTheme';
 import { windowWidth } from '../utils/Dimentions';
 
 const BarraEntrada = ({ isVisible, setIsVisible,goBack,eliminarEntrada ,EditarEntrada}) => {
@@ -14,6 +15,7 @@ const BarraEntrada = ({ isVisible, setIsVisible,goBack,eliminarEntrada ,EditarEn
                 name='arrow-back'
                 size={30}
                 onPress={goBack }
+                color={colores.principal}
             />
 
 
@@ -24,18 +26,19 @@ const BarraEntrada = ({ isVisible, setIsVisible,goBack,eliminarEntrada ,EditarEn
 
                         <View style={styles.iconosRight}>
                             <Menu.Item
-                                icon={() => <Icon name='edit' size={20} />}
+                                icon={() => <Icon name='edit' size={20} color={colores.principal} />}
                                 onPress={() => EditarEntrada() }
                                 title="Editar"
                             />
                             <Menu.Item
-                                icon={() => <Icon name='delete' size={20} />}
+                                icon={() => <Icon name='delete' size={20}  color={colores.principal}/>}
                                 onPress={() => eliminarEntrada() }
                                 title="Borrar"
                             />
                         </View>
                         <View  >
                             <Icon
+                                color={colores.principal}
                                 name='more-horiz'
                                 size={30}
                                 onPress={() => setIsVisible(false)}
@@ -48,6 +51,7 @@ const BarraEntrada = ({ isVisible, setIsVisible,goBack,eliminarEntrada ,EditarEn
                             name='more-vert'
                             size={30}
                             onPress={() => setIsVisible(true)}
+                            color={colores.principal}
                         />
                     </View>
                 )

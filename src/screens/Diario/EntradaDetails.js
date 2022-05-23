@@ -63,18 +63,7 @@ const EntradaDetails = ({navigation, route}) => {
             id:3,
             emocion:item.emocion
         },
-        // {
-        //     contenido: item.respuesta,  
-        //     title: 'Respuesta',
-        //     id:4,
-        //     emocion:item.emocion
-        // },
-        // {
-        //     contenido: item.sugerencia,  
-        //     title: 'Sugerencia', 
-        //     id:5,
-        //     emocion:item.emocion  
-        // },
+
     ]
 
     const goBack = () => {
@@ -95,13 +84,13 @@ const EntradaDetails = ({navigation, route}) => {
                         (item.id === 3)  ? (
                         <View style={[styles.sentimiento, {backgroundColor:emociones[item.emocion].colores}]} >
                             <ImageIcono url={emociones[item.emocion].img} />
-                            <Text> {emociones[item.emocion].name} </Text> 
+                            <Text style={{color:colores.purpleBG}} > {emociones[item.emocion].name} </Text> 
                         </View>
                           
                         )
                         :(
                             <View style={{marginHorizontal:15,marginTop:30}}>
-                                <Text style={{fontSize:23}} >{item.contenido}</Text>
+                                <Text style={{fontSize:23,color:colores.purpleBG}} >{item.contenido}</Text>
                             </View>
                             
                         )
@@ -134,7 +123,7 @@ const EntradaDetails = ({navigation, route}) => {
                 <View style={{justifyContent:'center',alignItems:'center'}} >
                     <Titulos texto={'Diario de emociones'} />
 
-                    <Text style={{textTransform:'uppercase'}} >{moment.unix(item.fecha).format('DD MMMM YYYY')} </Text>
+                    <Text style={{textTransform:'uppercase',color:colores.purpleBG}} >{moment.unix(item.fecha).format('DD MMMM YYYY')} </Text>
                 </View>
                 
 

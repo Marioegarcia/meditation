@@ -65,7 +65,7 @@ const EditarEntrada = ({navigation,route}) => {
         {
             id:2,
             input: 'pensamiento',
-            titulo: 'pensamiento',
+            titulo: 'Pensamiento',
             value: form.pensamiento,
         },
         {
@@ -106,7 +106,7 @@ const EditarEntrada = ({navigation,route}) => {
 
                             return (
                               <View key={inp.id}>
-                                <Text> {inp.titulo} </Text>
+                                <Text style={{color:colores.principal}} > {inp.titulo} </Text>
 
                                 {
                                    (inp.id == 3) ?  (

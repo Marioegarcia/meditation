@@ -8,6 +8,7 @@ import {FondoCuadros} from '../../components/FondoCuadros';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Menu, Provider} from 'react-native-paper';
 import {AuthContext} from '../../context/AuthContext';
+import { Quotes } from '../../components/Motivame/Quotes';
 
 export const CrearCitaScreen = ({navigation}) => {
     const [visible, setVisible] = React.useState(false);
@@ -50,29 +51,10 @@ export const CrearCitaScreen = ({navigation}) => {
                     />
                     
                 </View>
-                <View>
-                    <Motivame />
-                </View>
-                <View style={styles.btnNext}>
-                    <TouchableOpacity
-                        onPress={nextQuote}
-                        style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width: 60,
-                            height: 60,
-                        }}>
-                        <Icon
-                            name="chevron-right"
-                            size={33}
-                            color="rgba(129, 221, 220, 1)"
-                            style={{
-                                backgroundColor: 'rgba(129, 221, 220, 0.2)',
-                                borderRadius: 100,
-                            }}
-                        />
-                    </TouchableOpacity>
-                </View>
+               
+                <Motivame />
+               
+
                 <View />
             </View>
         </Provider>

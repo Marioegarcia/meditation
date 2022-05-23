@@ -8,22 +8,25 @@ import {colores} from '../../theme/appTheme';
 import { AuthContext } from '../../context/AuthContext';
 import {  Subheading } from 'react-native-paper';
 import  Icon  from 'react-native-vector-icons/MaterialIcons';
+import { useCouter } from '../../hooks/useCounter';
 
 
 export const Reflexion = React.memo(() => {
     const [count, setCount] = useState(0);
-    const {citas,citasGet} = useContext(AuthContext);
-
+  
+    const { counter, increment,citas } =  useCouter(1);
    
     const siguienteCita = () => {
         setCount( count + 1 );
       
         if (count > 5) {
+            console.log('espere');
             setTimeout(() => {
-                setCount(0)
+                setCount(0);
+                increment();
             }, 60000);
         } else {
-            citasGet();
+            increment();
         }
        
     }
@@ -50,9 +53,9 @@ export const Reflexion = React.memo(() => {
             <View style={styles.cardContent}>
                 <View style={{flexDirection: 'row', marginVertical: 15}}>
                    
-                    <Subheading selectable style={styles.reflexion} >{'"'+citas.nota+'"'}</Subheading>
+                    <Subheading selectable style={styles.reflexion} >{'"'+citas[counter]?.nota+'"'}</Subheading>
                 </View>
-                    <Subheading selectable style={styles.autor}>- {citas.autor}</Subheading>
+                    <Subheading selectable style={styles.autor}>- {citas[counter]?.autor}</Subheading>
                 
             </View>
 

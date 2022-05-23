@@ -9,6 +9,7 @@ import { colores } from '../../theme/appTheme';
 import { useForm } from '../../hooks/useForm';
 import { AuthContext } from '../../context/AuthContext';
 import { NotificacionAlerta } from '../../components/NotificacionAlerta';
+import SelectDropdown from 'react-native-select-dropdown';
 
 
 export const NewQuote = ({navigation}) => {
@@ -17,6 +18,7 @@ export const NewQuote = ({navigation}) => {
         autor:'Anonimo',
         categoria:'Inspiración'
     })
+    
 
     const {createQuote} = useContext(AuthContext);
 
@@ -52,13 +54,14 @@ export const NewQuote = ({navigation}) => {
                 />
             </View>
             <View style={styles.card}>
-                <View  >
-                    <Text style={styles.label} >Escribe una frase motivadora</Text>
-                    <ControlInput 
+                <View >
+                  <Text style={styles.label} >Escribe una frase motivadora</Text>
+                  <ControlInput 
                     input={'quote'}
                     onChange={onChange}
                     lines={5} 
-                    />
+                  />
+                 
 
                   <Text style={styles.label} >Autor</Text>
                     <ControlInput 
@@ -89,7 +92,8 @@ const styles = StyleSheet.create({
   },
    
     label:{
-      fontSize:adjust(18)
+      fontSize:adjust(18),
+      color:colores.purpleBG
     },
     card:{
       
