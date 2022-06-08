@@ -84,12 +84,12 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     titulo:{
-        fontSize: adjust(16),
+        fontSize: adjust(14),
         color: colores.texto,
         fontWeight: 'bold',
     },
     reflexion: {
-        fontSize: adjust(15),
+        fontSize: adjust(12),
         fontFamily: 'serif',
         color: colores.principal,
         fontStyle: 'italic',
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         
     },
     autor: {
-        fontSize: adjust(14),
+        fontSize: adjust(12),
         color: colores.principal,
     },
     btnNext:{

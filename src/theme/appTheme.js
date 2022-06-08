@@ -11,7 +11,7 @@ export const colores = {
     bgLight: '#eef2fb',
     bgLight2: '#edf6f7',
     bgLight3: '#E3F8FD',
-    
+    bgColor:'#eaedf5',
     // blanco: '#ffe9ea',
     blanco: 'white',
     texto:'#123e56',

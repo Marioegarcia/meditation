@@ -19,12 +19,7 @@ export const ItemNotToDo = memo(({item, cambioTarea,openBarra,cambioColor, setCa
         'No tienen que hacese',
         'No se puede controlar'
         ]
-       
-       
-        
 
-        
-        
         return (
             <>
                 <Card
@@ -97,22 +92,30 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.30,
         shadowRadius: 4.65,
 
-        elevation: 6,
+        elevation: 1,
+       
+        justifyContent:'center',
+        
         
     },
     container: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'center',
-        height:windowHeight / 9
+        height:windowHeight / 9,
+        
     },
     texto: {
-        fontSize: adjust(15),
-        
-        color: colores.principal
+        fontSize: adjust(12),
+        color: colores.principal,
+       
+        marginVertical:0
     },
     subtitulo:{
         // color:colores.purple
-        fontSize: adjust(10)
+        fontSize: adjust(10),
+        
+        marginVertical:0,
+        
     }
 });

@@ -78,21 +78,22 @@ export default SettingsScreen;
 const styles = StyleSheet.create({
     header: {
         flex: 1,
-
-        margin: 10,
+        backgroundColor:colores.bgColor,
+        
+    },
+    top: {
+        flex:1,
+        marginVertical: 15,
+        marginHorizontal:5,
         // justifyContent: 'space-between',
-        borderRadius: 20,
-        elevation: 7,
+        borderRadius: 10,
+        elevation: 1,
         backgroundColor: 'white',
         paddingTop: 20,
         // paddingLeft: 20,
     },
-    top: {
-        flex:1,
-        // backgroundColor:'red'
-    },
     nombre: {
-       fontSize:adjust(16),
+       fontSize:adjust(13),
         color: colores.principal,
     },
 });

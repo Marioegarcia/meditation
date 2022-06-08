@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         
     },
     header: {
-        fontSize: adjust(16),
+        fontSize: adjust(14),
         color: colores.texto,
         fontWeight: 'bold',
     },

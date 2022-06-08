@@ -9,7 +9,7 @@ export const AccesoDirectoHome = ({texto,icono,nav}) => {
   return (
     <TouchableOpacity onPress={nav} activeOpacity={0.9} >
         <View style={styles.content} >
-            <Icon name={icono}  size={adjust(14)} color={colores.purple} />
+            <Icon name={icono}  size={adjust(12)} color={colores.purple} />
             <Text style={styles.texto} >{texto}</Text>
         </View>
     
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     texto:{
         color:colores.purple,
-        fontSize:adjust(12),
+        fontSize:adjust(10),
         fontWeight:'bold'
     }
 })

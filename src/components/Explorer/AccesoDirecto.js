@@ -91,6 +91,7 @@ export const AccesoDirecto = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginBottom:10
     },
     section:{
         // marginVertical:20
@@ -98,8 +99,8 @@ const styles = StyleSheet.create({
         alignItems:'center'
     },
     toggle:{
-        width: windowWidth / 6,
-        height:windowWidth / 6,
+        width: windowWidth / 6.1,
+        height:windowWidth / 6.1,
         justifyContent:'center',
         alignItems:'center',
         borderRadius:20,

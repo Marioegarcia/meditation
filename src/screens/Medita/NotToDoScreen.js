@@ -88,16 +88,10 @@ const NotToDoScreen = ({navigation}) => {
                     nav={newTodo}
                     btnText={'Crear nueva tarea'}
                     />
-                           
-        
-                           
-                    
-                            
-            
                    
                 </>
             ) : (
-                <View style={{flex:1, backgroundColor:colores.bgLight, paddingTop:20}} >
+                <View style={{flex:1, paddingTop:20}} >
                 
                     <FlatList
                         data={ordenarDone(noToDo)}
@@ -114,7 +108,7 @@ const NotToDoScreen = ({navigation}) => {
                         key={item => item.id}
                         style={{flex: 1}}
                         extraData={ordenarDone(noToDo)}
-                      ListFooterComponent={(
+                        ListFooterComponent={(
                         <View style={{height:90}} />
                       )}
                     />
@@ -132,7 +126,7 @@ export default NotToDoScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // paddingHorizontal:5,
+        backgroundColor: colores.bgColor
         
     },
     cabecera: {
@@ -141,7 +135,7 @@ const styles = StyleSheet.create({
     },
     todo: {
         fontSize: adjust(24),
-        fontFamily: 'serif',
+        // fontFamily: 'serif',
         fontWeight: 'bold',
         // color: '#4690d4',
         color: colores.purpleBG,

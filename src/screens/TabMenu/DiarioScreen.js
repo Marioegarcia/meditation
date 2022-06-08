@@ -55,7 +55,7 @@ export default DiarioScreen;
 const styles = StyleSheet.create({
     contenedor: {
         flex: 1,
-        backgroundColor:colores.blanco
+        backgroundColor:colores.bgColor
     },
     titulo: {
         marginVertical: windowHeight * 3 / 100,

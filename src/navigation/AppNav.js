@@ -106,6 +106,7 @@ const AppNav = () => {
             options={{ title:'Settings' }}
             name="SettingsScreen" 
             component={SettingsScreen} 
+            
             />
             
         </Tab.Navigator>

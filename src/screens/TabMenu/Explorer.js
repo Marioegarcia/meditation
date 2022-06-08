@@ -26,31 +26,32 @@ const Explorer = ({ navigation }) => {
     }
     return (
         
-        <View style={{ flex:1 }}>
+        <View style={{ flex:1}}>
             <ScrollView style={[styles.scrollContent]}  showsVerticalScrollIndicator={false}>
+                <View style={[styles.content]} >
+                    <HeaderTitle/>
+                </View>
                 <View style={styles.container} >
 
-                    <View style={[styles.content]} >
-                        <HeaderTitle/>
-                    </View>
+                    
 
                     <View style={[styles.content,
                     {
-                        backgroundColor:colores.bgLight
+                        backgroundColor:colores.blanco
                     }]} >
                         <Reflexion/>
                     </View>
 
                     <View style={[styles.content,
                     {
-                        backgroundColor:colores.bgLight2,
+                        backgroundColor:colores.blanco,
                         
                     }]} >
                         <RecuerdoObjetivo crearNueva={crearNueva} />
                     </View>
 
                     
-                    <View style={[styles.content,{backgroundColor:colores.bgLight3}]} >
+                    <View style={[styles.content,{backgroundColor:colores.blanco}]} >
                         <Text style={styles.subtitulo} >Accesos directos</Text>
                         <View style={styles.access} >
 
@@ -93,23 +94,24 @@ export default Explorer
 
 const styles = StyleSheet.create({
     scrollContent:{
-        backgroundColor:colores.blanco,
+        backgroundColor:colores.bgColor,
         
     },
     container:{        
-        paddingVertical:15,
+        paddingVertical:1,
         paddingHorizontal:12,
     },
     content:{
         borderRadius:5,
         marginVertical:6,
         overflow:'hidden',
-        minHeight:140
+        // minHeight:140,
+        backgroundColor:colores.blanco
         
         
     },
     subtitulo:{
-        fontSize: adjust(16),
+        fontSize: adjust(14),
         color: colores.texto,
         fontWeight: 'bold',
         marginTop:10,

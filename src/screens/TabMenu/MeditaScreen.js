@@ -81,7 +81,7 @@ const MeditaScreen = memo(({navigation}) => {
     );
 
     return (
-        <View style={{flex:1}} >
+        <View style={{flex:1,backgroundColor:colores.bgColor}} >
             
            
             

@@ -16,11 +16,15 @@ const HeaderTitle = () => {
 
 
     return (
-        <View style={styles.container} >
-           <Text style={styles.titulo} >{mensaje} {nombre}</Text>
-           <Text style={styles.subtitulos} >¿Cómo sientes hoy?</Text>
+        <>
+            <View style={styles.container} >
+                <Text style={styles.titulo} >{mensaje} {nombre}</Text>
+                <Text style={styles.subtitulos} >¿Cómo sientes hoy?</Text>
+                
+            </View>
             <AccesoDirecto/>
-        </View>
+        </>
+
     )
 }
 
@@ -32,11 +36,11 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'flex-start',
         paddingVertical:10,
-        // paddingHorizontal:10
+        paddingHorizontal:10,
         marginVertical:10
     },
     titulo: {
-        fontSize:adjust(25),
+        fontSize:adjust(20),
         fontWeight:'bold',
         color:colores.principal
     },
